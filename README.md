@@ -1,4 +1,4 @@
-# Little iPhone 6
+# A Doll's House: An Interactive Phone
 
 A self-contained, interactive iPhone 6 made with plain HTML, CSS, and JavaScript.
 
