@@ -665,7 +665,7 @@ window.X_DATA = {
       "avatar": "nora",
       "time": "Dec 24 · 5:25 PM",
       "sort": "2026-12-24T17:25:00",
-      "text": "and now I’ll have to wrestle with amazon’s stupid return policy… bye beautiful dress that was in my shopping cart for ages",
+      "text": "and now I’ll have to wrestle with amazon’s stupid return policy…",
       "stats": {
         "Comments": "0",
         "Reposts": "0",
