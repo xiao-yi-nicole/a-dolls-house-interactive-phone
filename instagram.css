@@ -1,0 +1,601 @@
+/* ================================================================== */
+/* Instagram — light-mode Nora profile and post detail                  */
+/* ================================================================== */
+
+.app-layer.ig-instant {
+  transition: none !important;
+}
+
+.app-view.igx-app {
+  background: #fff;
+  color: #000;
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+.igx-screens {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.igx-screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.igx-screen.is-active {
+  display: flex;
+}
+
+/* ---------- Top bars ---------- */
+
+.igx-topbar {
+  position: relative;
+  z-index: 5;
+  flex: none;
+  height: 46px;
+  padding: 0 14px;
+  background: #fff;
+  border-bottom: .5px solid #efefef;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.igx-topbar-username {
+  color: #000;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.igx-topbar-button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  display: grid;
+  place-items: center;
+}
+
+.igx-topbar-button svg {
+  width: 22px;
+  height: 22px;
+}
+
+.igx-detail-topbar {
+  justify-content: center;
+}
+
+.igx-detail-back {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  margin-top: -16px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  display: grid;
+  place-items: center;
+}
+
+.igx-detail-back svg {
+  width: 22px;
+  height: 22px;
+}
+
+.igx-detail-title {
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ---------- Profile header ---------- */
+
+.ig-feed {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  background: #fff;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+
+.ig-feed::-webkit-scrollbar {
+  display: none;
+}
+
+.igx-profile-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 16px 0;
+}
+
+.igx-avatar {
+  flex: none;
+  border-radius: 50%;
+  background-color: #efefef;
+  background-image: var(--ig-avatar);
+  background-size: cover;
+  background-position: center;
+}
+
+.igx-profile-avatar {
+  width: 76px;
+  height: 76px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #efefef;
+}
+
+.igx-stats {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.igx-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: #262626;
+}
+
+.igx-stat strong {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.igx-stat span {
+  font-size: 9.5px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.igx-profile-name {
+  margin: 12px 16px 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.igx-bio {
+  margin: 6px 16px 12px;
+  color: #262626;
+  font-size: 11.5px;
+  line-height: 1.42;
+}
+
+.igx-bio-line + .igx-bio-line {
+  margin-top: 1px;
+}
+
+.igx-link {
+  color: #0095f6;
+  font-weight: 600;
+}
+
+.igx-profile-posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  border-top: .5px solid #efefef;
+}
+
+.igx-grid-tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border: 0;
+  background-color: #efefef;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+.igx-grid-pin,
+.igx-grid-multi {
+  position: absolute;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .45));
+  pointer-events: none;
+}
+
+.igx-grid-pin {
+  top: 5px;
+  left: 5px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .5);
+}
+
+.igx-grid-pin svg {
+  width: 10px;
+  height: 10px;
+  fill: currentColor;
+  stroke: none;
+}
+
+.igx-grid-multi {
+  top: 5px;
+  right: 5px;
+}
+
+.igx-grid-multi svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+/* ---------- Posts ---------- */
+
+.igx-post {
+  padding: 10px 0 0;
+  border-bottom: .5px solid #efefef;
+  background: #fff;
+}
+
+.igx-post-head {
+  padding: 0 14px 7px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 32px;
+}
+
+.igx-post-avatar {
+  width: 30px;
+  height: 30px;
+}
+
+.igx-post-user {
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.igx-post-more {
+  margin-left: auto;
+  color: #000;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: .08em;
+}
+
+.igx-music {
+  margin: -2px 14px 6px 53px;
+  color: #737373;
+  font-size: 9.5px;
+  line-height: 1.2;
+}
+
+.igx-media-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: #fafafa;
+}
+
+.igx-media {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background-color: #efefef;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+.igx-media-single {
+  aspect-ratio: 3 / 4;
+}
+
+.igx-pinned {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .66);
+  color: #fff;
+  font-size: 8.5px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .01em;
+  pointer-events: none;
+}
+
+.igx-pinned svg {
+  width: 10px;
+  height: 10px;
+  fill: currentColor;
+  stroke: none;
+}
+
+.igx-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  width: 100%;
+  background: #fff;
+}
+
+.igx-grid-cell {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border: 0;
+  background-color: #efefef;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
+/* Embedded image classes */
+.igx-img-wedding { background-image: var(--ig-wedding); }
+.igx-img-baby { background-image: var(--ig-baby); }
+.igx-img-tree { background-image: var(--ig-tree); }
+.igx-img-party { background-image: var(--ig-party); }
+.igx-img-multi-1 { background-image: var(--ig-multi-1); }
+.igx-img-multi-2 { background-image: var(--ig-multi-2); }
+.igx-img-multi-3 { background-image: var(--ig-multi-3); }
+.igx-img-multi-4 { background-image: var(--ig-multi-4); }
+.igx-img-multi-5 { background-image: var(--ig-multi-5); }
+.igx-img-multi-6 { background-image: var(--ig-multi-6); }
+.igx-img-multi-7 { background-image: var(--ig-multi-7); }
+.igx-img-multi-8 { background-image: var(--ig-multi-8); }
+.igx-img-multi-9 { background-image: var(--ig-multi-9); }
+
+.igx-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 14px 0;
+  color: #000;
+}
+
+.igx-action {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+}
+
+.igx-action svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.igx-save {
+  margin-left: auto;
+}
+
+.igx-likes {
+  padding: 5px 14px 0;
+  color: #262626;
+  font-size: 10.5px;
+  line-height: 1.3;
+}
+
+.igx-likes strong {
+  font-weight: 700;
+}
+
+.igx-caption {
+  padding: 3px 14px 0;
+  color: #262626;
+  font-size: 11.5px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.igx-caption strong {
+  color: #000;
+  font-weight: 700;
+}
+
+.igx-time {
+  padding: 5px 14px 10px;
+  color: #8e8e8e;
+  font-size: 9px;
+  line-height: 1.2;
+  letter-spacing: .01em;
+}
+
+/* ---------- Detail ---------- */
+
+.ig-detail {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: auto;
+  background: #fff;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+
+.ig-detail::-webkit-scrollbar {
+  display: none;
+}
+
+.igx-detail-post {
+  padding: 0;
+}
+
+.igx-detail-post .igx-post-head {
+  padding-top: 10px;
+}
+
+.igx-detail-media {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-color: #efefef;
+  background-size: cover;
+  background-position: center;
+}
+
+.igx-play {
+  margin: 9px 14px 0;
+  padding: 7px 11px;
+  border: 1px solid #dbdbdb;
+  border-radius: 9px;
+  background: #fff;
+  color: #000;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.igx-play[hidden] {
+  display: none;
+}
+
+.igx-detail-actions {
+  padding-top: 9px;
+}
+
+.igx-detail-likes {
+  padding-top: 6px;
+}
+
+.igx-detail-caption {
+  padding-top: 5px;
+}
+
+.igx-detail-time {
+  padding-bottom: 22px;
+}
+
+/* ---------- Multi-image carousel ---------- */
+
+.igx-carousel {
+  position: relative;
+  width: 100%;
+  background: #fafafa;
+}
+
+.igx-carousel-track {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  scrollbar-width: none;
+}
+
+.igx-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.igx-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  scroll-snap-align: start;
+  background-color: #efefef;
+  background-size: cover;
+  background-position: center;
+}
+
+.igx-carousel-arrow {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  width: 26px;
+  height: 26px;
+  margin-top: -13px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .7);
+  color: #111;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+  display: grid;
+  place-items: center;
+}
+
+.igx-carousel-arrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+.igx-carousel-prev {
+  left: 8px;
+}
+
+.igx-carousel-next {
+  right: 8px;
+}
+
+.igx-carousel-counter {
+  position: absolute;
+  right: 9px;
+  bottom: 9px;
+  z-index: 3;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .58);
+  color: #fff;
+  font-size: 8.5px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ---------- Misc ---------- */
+
+.igx-app button {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.igx-app :focus-visible {
+  outline-color: #0095f6;
+}

@@ -1,0 +1,331 @@
+/* ================================================================== */
+/* Notes — native iOS light list and editor                            */
+/* ================================================================== */
+
+.app-layer.ntx-instant {
+  transition: none !important;
+}
+
+.app-view.ntx-app {
+  background: #f2f2f7;
+  color: #000;
+  padding-top: 20px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.ntx-screens {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ntx-screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  background: #f2f2f7;
+}
+
+.ntx-screen.is-active {
+  display: flex;
+}
+
+.ntx-screen[data-ntx-screen="detail"] {
+  background: #fff;
+}
+
+.ntx-topbar {
+  position: relative;
+  z-index: 5;
+  flex: none;
+  height: 44px;
+  padding: 0 16px;
+  background: #f2f2f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ntx-folders {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffcc00;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ntx-chevron {
+  font-size: 22px;
+  line-height: 18px;
+  margin-top: -1px;
+}
+
+.ntx-compose {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #ffcc00;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.ntx-compose svg,
+.ntx-icon-button svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ntx-icon-button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #ffcc00;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.ntx-icon-button svg {
+  width: 21px;
+  height: 21px;
+}
+
+.ntx-list {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  background: #f2f2f7;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+  padding-bottom: 72px;
+}
+
+.ntx-list::-webkit-scrollbar {
+  display: none;
+}
+
+.ntx-large-title {
+  margin: 8px 16px 10px;
+  color: #000;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.15;
+}
+
+.ntx-search {
+  height: 36px;
+  margin: 0 16px 14px;
+  padding: 0 10px;
+  border-radius: 10px;
+  background: #e3e3e8;
+  color: #8e8e93;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.ntx-search svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.ntx-cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.ntx-item {
+  width: calc(100% - 32px);
+  margin: 0 16px 10px;
+  padding: 13px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  display: block;
+  text-align: left;
+  font-family: inherit;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .035);
+  cursor: pointer;
+}
+
+.ntx-item:active {
+  background: #f5f5f7;
+}
+
+.ntx-item-title {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #000;
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+
+.ntx-item-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  min-width: 0;
+  margin-top: 4px;
+}
+
+.ntx-item-date {
+  flex: none;
+  color: #8e8e93;
+  font-size: 10.5px;
+  font-weight: 400;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.ntx-item-preview {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #8e8e93;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.ntx-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 8;
+  height: 50px;
+  padding: 0 20px;
+  background: rgba(242, 242, 247, .96);
+  border-top: .5px solid #d1d1d6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ntx-bottom-icon {
+  width: 26px;
+  height: 26px;
+  color: #ffcc00;
+  display: grid;
+  place-items: center;
+}
+
+.ntx-bottom-icon svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ntx-detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ntx-done {
+  padding: 0 1px;
+  border: 0;
+  background: transparent;
+  color: #ffcc00;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ntx-detail {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  background: #fff;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+  padding: 18px 16px 280px;
+}
+
+.ntx-detail::-webkit-scrollbar {
+  display: none;
+}
+
+.ntx-detail-title {
+  margin: 0;
+  color: #000;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+}
+
+.ntx-detail-date {
+  margin: 6px 0 22px;
+  color: #8e8e93;
+  font-size: 10.5px;
+  line-height: 1.2;
+}
+
+.ntx-detail-body {
+  color: #1c1c1e;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ntx-line {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.ntx-line.is-struck {
+  text-decoration: line-through;
+}

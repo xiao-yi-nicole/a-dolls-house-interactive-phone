@@ -1,0 +1,302 @@
+/* ================================================================== */
+/* Calendar — iOS-style December 2026 month and events                 */
+/* ================================================================== */
+
+.app-layer.calx-instant {
+  transition: none !important;
+}
+
+.app-view.calx-app {
+  background: #fff;
+  color: #000;
+  padding-top: 20px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.calx-topbar {
+  position: relative;
+  z-index: 5;
+  flex: none;
+  height: 44px;
+  padding: 0 16px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calx-back {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ff3b30;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.calx-back-chevron {
+  width: 23px;
+  height: 23px;
+  display: grid;
+  place-items: center;
+}
+
+.calx-back-chevron svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.calx-topbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #ff3b30;
+}
+
+.calx-topbar-icon {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+}
+
+.calx-topbar-icon svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cal-scroll {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  background: #fff;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+  padding: 0 12px 58px;
+}
+
+.cal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.calx-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 18px;
+  align-items: center;
+  color: #8e8e93;
+  font-size: 9.5px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.calx-month {
+  position: relative;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1px 0 4px;
+}
+
+.calx-month-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.calx-month-copy strong {
+  color: #ff3b30;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+
+.calx-month-copy small {
+  color: #8e8e93;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.calx-arrow {
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin-top: -11px;
+  color: #c7c7cc;
+  font-size: 19px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.calx-arrow-left {
+  left: 2px;
+}
+
+.calx-arrow-right {
+  right: 2px;
+}
+
+.calx-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 1px;
+}
+
+.calx-day {
+  position: relative;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.calx-day-number {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.calx-day.is-selected .calx-day-number {
+  background: #ff3b30;
+  color: #fff;
+  font-weight: 600;
+}
+
+.calx-day.is-empty {
+  cursor: default;
+}
+
+.calx-dot {
+  width: 3px;
+  height: 3px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: #c7c7cc;
+}
+
+.calx-divider {
+  height: .5px;
+  margin: 7px 2px 0;
+  background: #e5e5ea;
+}
+
+.calx-events {
+  padding: 10px 3px 0;
+}
+
+.calx-date-heading {
+  margin: 0 0 7px;
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -.015em;
+  line-height: 1.2;
+}
+
+.calx-event {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: .5px solid #e5e5ea;
+}
+
+.calx-event-time {
+  width: 42px;
+  flex: none;
+  color: #ff3b30;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: right;
+}
+
+.calx-event-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.calx-event-copy strong {
+  color: #000;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.calx-event-copy small {
+  color: #8e8e93;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.calx-empty {
+  margin: 0;
+  padding: 7px 0;
+  color: #8e8e93;
+  font-size: 12.5px;
+  line-height: 1.3;
+}
+
+.calx-tabs {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 8;
+  height: 46px;
+  padding: 0 18px;
+  background: rgba(255, 255, 255, .97);
+  border-top: .5px solid #e5e5ea;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ff3b30;
+  font-size: 11.5px;
+  font-weight: 500;
+}
+
+.calx-tabs span {
+  flex: 1;
+  text-align: center;
+}

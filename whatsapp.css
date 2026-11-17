@@ -1,0 +1,999 @@
+/* ================================================================== */
+/* WhatsApp — content, navigation, email viewer and exact docx styling  */
+/* ================================================================== */
+
+/* The WhatsApp pages switch instantly; the global app-layer fade is disabled. */
+.app-layer.wa-instant {
+  transition: none !important;
+}
+
+.app-view.wa-app {
+  background: #075e54;
+  color: #111b21;
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+.wa-app button,
+.wa-app input,
+.wa-app textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.wa-app :focus-visible {
+  outline-color: #128c7e;
+}
+
+.wa-screens {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.wa-screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.wa-screen.is-active {
+  display: flex;
+}
+
+/* ---------- Shared topbar ---------- */
+
+.wa-topbar {
+  position: relative;
+  z-index: 5;
+  flex: none;
+  height: 58px;
+  padding: 0 10px;
+  background: #075e54;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wa-icon-button {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: currentColor;
+  display: grid;
+  place-items: center;
+}
+
+.wa-icon-button svg {
+  width: 21px;
+  height: 21px;
+}
+
+.wa-topbar h1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -.015em;
+  white-space: nowrap;
+}
+
+.wa-topbar-icons {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+}
+
+.wa-topbar-icons svg {
+  width: 18px;
+  height: 18px;
+}
+
+.wa-avatar {
+  width: 45px;
+  height: 45px;
+  flex: none;
+  border-radius: 50%;
+  background-color: #d9e2e5;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .18);
+}
+
+.wa-avatar-torvald { background-image: var(--wa-avatar-torvald); }
+.wa-avatar-christine { background-image: var(--wa-avatar-christine); }
+.wa-avatar-krogstad { background-image: var(--wa-avatar-krogstad); }
+.wa-avatar-anne { background-image: var(--wa-avatar-anne); }
+
+/* ---------- Contact list ---------- */
+
+.wa-list-topbar {
+  background: #075e54;
+}
+
+.wa-contact-list {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior-y: contain;
+  background: #fff;
+}
+
+.wa-contact-row {
+  position: relative;
+  width: 100%;
+  min-height: 72px;
+  padding: 9px 12px;
+  border: 0;
+  border-bottom: .5px solid #edf0f1;
+  background: #fff;
+  color: #111b21;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-align: left;
+}
+
+.wa-contact-row.is-unread .wa-contact-line strong,
+.wa-contact-row.is-unread .wa-contact-preview {
+  color: #111b21;
+  font-weight: 700;
+}
+
+.wa-contact-row.is-unread .wa-contact-preview {
+  padding-right: 22px;
+}
+
+.wa-unread-badge {
+  position: absolute;
+  right: 12px;
+  bottom: 11px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 5px;
+  border-radius: 99px;
+  background: #25d366;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 9.5px;
+  font-weight: 750;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .18);
+}
+
+.wa-contact-row:active {
+  background: #f3f5f5;
+}
+
+.wa-contact-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.wa-contact-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.wa-contact-line strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.wa-contact-date {
+  flex: none;
+  color: #667781;
+  font-size: 9.5px;
+  font-weight: 400;
+}
+
+.wa-contact-preview {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #667781;
+  font-size: 11.5px;
+  line-height: 1.3;
+}
+
+.wa-draft-label {
+  color: #d93025;
+  font-weight: 700;
+}
+
+/* ---------- Chat topbar ---------- */
+
+.wa-chat-topbar {
+  height: 58px;
+  gap: 7px;
+}
+
+.wa-chat-topbar .wa-icon-button {
+  margin-left: -5px;
+}
+
+.wa-chat-topbar .wa-avatar {
+  width: 34px;
+  height: 34px;
+}
+
+.wa-chat-heading {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.wa-chat-heading strong {
+  max-width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.wa-chat-heading small {
+  color: rgba(255, 255, 255, .72);
+  font-size: 9px;
+  font-weight: 400;
+}
+
+/* ---------- Message area ---------- */
+
+.wa-messages {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  padding: 10px 10px 9px;
+  background-color: #efeae2;
+  background-repeat: repeat;
+  background-position: center;
+  scroll-behavior: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+
+.wa-messages::-webkit-scrollbar {
+  display: none;
+}
+
+.wa-chat-torvald {
+  background-image: var(--wa-bg-torvald);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.wa-chat-christine,
+.wa-chat-krogstad,
+.wa-chat-anne {
+  background-image: var(--wa-bg-default);
+  background-size: 360px auto;
+  background-repeat: repeat;
+}
+
+.wa-system-row {
+  width: 100%;
+  margin: 7px 0 8px;
+  text-align: center;
+  clear: both;
+}
+
+.wa-system-pill {
+  display: inline-block;
+  max-width: 82%;
+  padding: 4px 9px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, .9);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .08);
+  color: #667781;
+  font-size: 9.5px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: .01em;
+}
+
+.wa-row {
+  width: 100%;
+  display: flex;
+  clear: both;
+  margin: 0 0 7px;
+}
+
+.wa-row.out {
+  justify-content: flex-end;
+}
+
+.wa-row.in {
+  justify-content: flex-start;
+}
+
+.wa-row.has-reaction {
+  margin-bottom: 18px;
+}
+
+.wa-bubble-wrap {
+  position: relative;
+  max-width: 82%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.wa-row.out .wa-bubble-wrap {
+  align-items: flex-end;
+}
+
+.wa-bubble {
+  position: relative;
+  min-width: 38px;
+  padding: 6px 9px 4px;
+  border-radius: 8px;
+  box-shadow: 0 1px .5px rgba(0, 0, 0, .12);
+  color: #111b21;
+  font-size: 12.5px;
+  line-height: 1.34;
+  text-align: left;
+}
+
+.wa-bubble.in {
+  background: #fff;
+  border-top-left-radius: 1px;
+}
+
+.wa-bubble.out {
+  background: #dcf8c6;
+  border-top-right-radius: 1px;
+}
+
+.wa-bubble.in::before,
+.wa-bubble.out::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.wa-bubble.in::before {
+  left: -7px;
+  border-width: 0 7px 8px 0;
+  border-color: transparent #fff transparent transparent;
+}
+
+.wa-bubble.out::before {
+  right: -7px;
+  border-width: 0 0 8px 7px;
+  border-color: transparent transparent #dcf8c6 transparent;
+}
+
+.wa-text {
+  display: block;
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.wa-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 10px;
+  margin-top: 2px;
+  line-height: 1;
+}
+
+.wa-checks {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #34b7f1;
+  line-height: 0;
+}
+
+.wa-checks svg {
+  width: 16px;
+  height: 10px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wa-checks-gray {
+  color: #999;
+}
+
+.wa-checks-single {
+  color: #999;
+}
+
+.wa-checks-single svg {
+  width: 13px;
+  height: 10px;
+}
+
+/* ---------- Reactions ---------- */
+
+.wa-reaction {
+  position: absolute;
+  left: 4px;
+  bottom: -11px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 99px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+  color: #111b21;
+  font-size: 10.5px;
+  line-height: 1;
+}
+
+.wa-reaction b {
+  color: #667781;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+/* ---------- Quotes ---------- */
+
+.wa-quote {
+  display: block;
+  margin-bottom: 4px;
+  padding: 4px 6px;
+  border-left: 3px solid #128c7e;
+  border-radius: 3px;
+  background: #cfe9be;
+  color: #3d5a4e;
+  font-size: 10.5px;
+  line-height: 1.3;
+}
+
+.wa-quote strong {
+  display: block;
+  margin-bottom: 1px;
+  color: #075e54;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.wa-quote span {
+  display: block;
+}
+
+/* ---------- Call records ---------- */
+
+.wa-call-bubble {
+  min-width: 172px;
+  padding: 9px 11px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wa-call-icon {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  background: #edf3f1;
+  color: #00a884;
+  display: grid;
+  place-items: center;
+}
+
+.wa-call-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.wa-call-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.wa-call-title {
+  color: #111b21;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.wa-call-duration {
+  color: #8696a0;
+  font-size: 10.5px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* ---------- Email thumbnail ---------- */
+
+.wa-mail-row {
+  margin-bottom: 9px;
+}
+
+.wa-mail-card {
+  width: 236px;
+  max-width: 86%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  background: #fff;
+  color: #111b21;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .14);
+}
+
+.wa-mail-card:active {
+  background: #f7f7f7;
+}
+
+.wa-mail-top {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 25px;
+  padding: 4px 8px;
+  background: #fbfbfb;
+  border-bottom: .5px solid #ececec;
+}
+
+.wa-gmail-mark {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 5px;
+  border: 1px solid #f0d6d3;
+  background: #fff;
+  color: #ea4335;
+  display: grid;
+  place-items: center;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.wa-gmail-mark.tiny {
+  width: 17px;
+  height: 17px;
+  font-size: 11px;
+  border-radius: 4px;
+}
+
+.wa-mail-app {
+  flex: 1;
+  color: #5f6368;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+
+.wa-mail-status {
+  color: #d93025;
+  font-size: 8px;
+  font-weight: 650;
+}
+
+.wa-mail-subject {
+  padding: 7px 8px 0;
+  color: #202124;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.wa-mail-from {
+  padding: 3px 8px 0;
+  color: #5f6368;
+  font-size: 8.5px;
+  line-height: 1.25;
+}
+
+.wa-mail-from span {
+  color: #80868b;
+}
+
+.wa-mail-snippet {
+  padding: 4px 8px 0;
+  color: #5f6368;
+  font-size: 9px;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.wa-mail-scheduled {
+  padding: 5px 8px 0;
+  color: #c5221f;
+  font-size: 8px;
+  line-height: 1.3;
+}
+
+.wa-mail-open {
+  padding: 5px 8px 7px;
+  color: #1a73e8;
+  font-size: 8.5px;
+  font-weight: 600;
+}
+
+/* ---------- Composer ---------- */
+
+.wa-composer {
+  flex: none;
+  min-height: 49px;
+  padding: 6px 8px 7px;
+  background: #f0f2f5;
+  border-top: .5px solid rgba(0, 0, 0, .08);
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.wa-composer-plus {
+  width: 28px;
+  height: 32px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #54656f;
+  display: grid;
+  place-items: center;
+}
+
+.wa-composer-plus svg {
+  width: 18px;
+  height: 18px;
+}
+
+.wa-composer-field {
+  flex: 1;
+  min-width: 0;
+  min-height: 34px;
+  padding: 0 9px;
+  border-radius: 18px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.wa-input {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #111b21;
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+input.wa-input {
+  height: 34px;
+}
+
+input.wa-input::placeholder {
+  color: #8696a0;
+}
+
+.wa-draft-input {
+  height: 51px;
+  padding: 7px 0;
+  resize: none;
+  overflow-y: auto;
+}
+
+.wa-send {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #00a884;
+  color: #fff;
+  display: grid;
+  place-items: center;
+}
+
+.wa-send svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* ---------- Email full-screen viewer ---------- */
+
+.wa-email-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 80;
+  background: #0d0e0f;
+}
+
+.wa-email-overlay[hidden] {
+  display: none;
+}
+
+.wa-email-scrim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.wa-photo-close {
+  position: absolute;
+  top: 11px;
+  right: 12px;
+  z-index: 4;
+  width: 31px;
+  height: 31px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .16);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 1;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.wa-photo-close span {
+  display: block;
+  margin-top: -2px;
+}
+
+.wa-photo-stage {
+  position: absolute;
+  inset: 50px 13px 15px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.wa-email-shot {
+  width: 100%;
+  max-width: 340px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .6);
+  scroll-behavior: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+.wa-email-scroll {
+  padding: 0 14px 20px;
+}
+
+.wa-email-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.wa-gmail-bar {
+  height: 43px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-bottom: .5px solid #ececec;
+}
+
+.wa-gmail-bar > strong {
+  flex: 1;
+  color: #5f6368;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -.02em;
+}
+
+.wa-gmail-bar-icons {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #5f6368;
+}
+
+.wa-gmail-bar-icons svg {
+  width: 17px;
+  height: 17px;
+}
+
+.wa-email-status {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 7px;
+  border-radius: 4px;
+  background: #f1f3f4;
+  color: #5f6368;
+  font-size: 9.5px;
+  font-weight: 500;
+}
+
+.wa-email-status.is-scheduled {
+  background: #fce8e6;
+  color: #c5221f;
+}
+
+.wa-email-label {
+  margin-top: 11px;
+  color: #5f6368;
+  font-size: 8px;
+  font-weight: 650;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.wa-email-subject {
+  margin: 3px 0 7px;
+  color: #202124;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+}
+
+.wa-email-meta {
+  padding: 7px 0 9px;
+  border-bottom: .5px solid #ececec;
+}
+
+.wa-email-field-label {
+  margin-right: 3px;
+  color: #80868b;
+  font-size: 7.5px;
+  font-weight: 650;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.wa-email-from {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  color: #202124;
+  font-size: 10.5px;
+  line-height: 1.35;
+}
+
+.wa-email-sender {
+  font-weight: 650;
+}
+
+.wa-email-address {
+  color: #80868b;
+  font-size: 9.5px;
+}
+
+.wa-email-to {
+  margin-top: 2px;
+  color: #80868b;
+  font-size: 9.5px;
+  line-height: 1.35;
+}
+
+.wa-email-to .wa-email-field-label {
+  margin-right: 1px;
+}
+
+.wa-email-body {
+  padding-top: 11px;
+  color: #202124;
+}
+
+.wa-email-body p {
+  margin: 0 0 11px;
+  color: #202124;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.wa-email-attachment {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px;
+  border: .5px solid #dadce0;
+  border-radius: 7px;
+  background: #fbfbfb;
+}
+
+.wa-pdf-badge {
+  width: 30px;
+  height: 34px;
+  flex: none;
+  border-radius: 3px;
+  background: #fce8e6;
+  color: #d93025;
+  display: grid;
+  place-items: center;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.wa-email-attachment > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wa-email-attachment strong {
+  color: #202124;
+  font-size: 9.5px;
+  font-weight: 600;
+}
+
+.wa-email-attachment small {
+  color: #80868b;
+  font-size: 8.5px;
+}
+
+.wa-email-scroll-end {
+  height: 8px;
+}

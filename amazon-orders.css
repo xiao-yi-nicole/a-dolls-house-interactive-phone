@@ -1,0 +1,329 @@
+/* ================================================================== */
+/* Amazon — Your Orders                                                */
+/* ================================================================== */
+
+.app-layer.azx-instant {
+  transition: none !important;
+}
+
+.app-view.azx-app {
+  background: #fff;
+  color: #111;
+  padding-top: 20px;
+  overflow: hidden;
+  font-family: "Amazon Ember", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.azx-topbar {
+  flex: none;
+  height: 44px;
+  padding: 0 10px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.azx-back {
+  width: 28px;
+  height: 32px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #111;
+  display: grid;
+  place-items: center;
+}
+
+.azx-back svg {
+  width: 22px;
+  height: 22px;
+}
+
+.azx-search {
+  flex: 1;
+  height: 34px;
+  min-width: 0;
+  padding: 0 9px;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  background: #f0f2f2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.azx-search-placeholder {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #565959;
+  font-size: 11px;
+}
+
+.azx-search-icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: #565959;
+  display: grid;
+  place-items: center;
+}
+
+.azx-search-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.azx-search-icon use {
+  fill: none;
+  stroke: currentColor;
+}
+
+.azx-scroll {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  background: #fff;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+  padding-bottom: 58px;
+}
+
+.azx-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.azx-title {
+  margin: 0;
+  padding: 8px 16px 9px;
+  color: #111;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.1;
+}
+
+.azx-order-search {
+  height: 34px;
+  margin: 0 16px 7px;
+  padding: 0 9px;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.azx-order-search-icon {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  color: #565959;
+  display: grid;
+  place-items: center;
+}
+
+.azx-order-search-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.azx-order-search-text {
+  color: #565959;
+  font-size: 11.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.azx-filter {
+  margin-left: auto;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #007185;
+  font-size: 11.5px;
+  font-weight: 500;
+}
+
+.azx-filter svg {
+  width: 11px;
+  height: 11px;
+}
+
+.azx-groups {
+  padding-top: 1px;
+}
+
+.azx-order {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 12px;
+  background: #fff;
+  border-bottom: .5px solid #e5e5ea;
+}
+
+.azx-order-thumb {
+  display: block;
+  width: 80px;
+  height: 80px;
+  flex: none;
+  margin-top: 2px;
+  margin-right: 15px;
+  border-radius: 4px;
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.azx-order-copy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.azx-order-title {
+  margin: 0;
+  color: #111;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.32;
+  letter-spacing: -.012em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.azx-order-status {
+  margin: 4px 0 0;
+  color: #565959;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.azx-order-status.is-returning {
+  color: #007600;
+  font-weight: 700;
+}
+
+.azx-order-arrow {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  align-self: center;
+  margin-left: 8px;
+  color: #b0b0b5;
+  display: grid;
+  place-items: center;
+}
+
+.azx-order-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.azx-tabs {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 8;
+  height: 50px;
+  padding: 3px 4px 2px;
+  background: rgba(255, 255, 255, .98);
+  border-top: .5px solid #e5e5ea;
+  display: flex;
+  align-items: center;
+}
+
+.azx-tab {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  color: #565959;
+  font-size: 8px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.azx-tab.is-active {
+  color: #111;
+}
+
+.azx-tab-icon {
+  position: relative;
+  width: 21px;
+  height: 21px;
+  display: grid;
+  place-items: center;
+}
+
+.azx-tab-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.azx-cart-icon b {
+  position: absolute;
+  top: -4px;
+  right: -7px;
+  min-width: 13px;
+  height: 13px;
+  padding: 0 3px;
+  border-radius: 7px;
+  background: #e47911;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 13px;
+  text-align: center;
+}
+
+/* ---------- Embedded product thumbnails ---------- */
+
+.azx-img-nora-dress { background-image: var(--azx-nora-dress); }
+.azx-img-lights { background-image: var(--azx-lights); }
+.azx-img-candles { background-image: var(--azx-candles); }
+.azx-img-flowers { background-image: var(--azx-flowers); }
+.azx-img-christmas-tree { background-image: var(--azx-christmas-tree); }
+.azx-img-shawl1 { background-image: var(--azx-shawl1); }
+.azx-img-shawl2 { background-image: var(--azx-shawl2); }
+.azx-img-handkerchief { background-image: var(--azx-handkerchief); }
+.azx-img-dress1 { background-image: var(--azx-dress1); }
+.azx-img-dress2 { background-image: var(--azx-dress2); }
+.azx-img-doll-bedstead { background-image: var(--azx-doll-bedstead); }
+.azx-img-doll { background-image: var(--azx-doll); }
+.azx-img-trumpet { background-image: var(--azx-trumpet); }
+.azx-img-horse { background-image: var(--azx-horse); }
+.azx-img-sword { background-image: var(--azx-sword); }
+.azx-img-suit { background-image: var(--azx-suit); }

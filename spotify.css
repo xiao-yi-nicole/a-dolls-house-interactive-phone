@@ -1,0 +1,264 @@
+/* ================================================================== */
+/* Spotify — Liked Songs, gradient header and black track list         */
+/* ================================================================== */
+
+.app-layer.spx-instant {
+  transition: none !important;
+}
+
+.app-view.spx-app {
+  background: #121212;
+  color: #fff;
+  padding-top: 20px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.spx-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 370px;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    #a0b8a0 0%,
+    #8da58f 15%,
+    #617665 38%,
+    #303a33 64%,
+    #121212 92%,
+    #121212 100%
+  );
+}
+
+.spx-topbar {
+  position: relative;
+  z-index: 5;
+  flex: none;
+  height: 44px;
+  padding: 0 12px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.spx-back {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.spx-back svg {
+  width: 22px;
+  height: 22px;
+}
+
+.spx-topbar-title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  white-space: nowrap;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .25);
+}
+
+.spx-hero {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  padding: 4px 16px 8px;
+}
+
+.spx-playlist-cover {
+  display: block;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  background-image: var(--spx-liked);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .32);
+}
+
+.spx-playlist-title {
+  margin: 12px 0 0;
+  color: #fff;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.spx-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  min-height: 50px;
+}
+
+.spx-meta {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: #b3b3b3;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.spx-globe {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.spx-play {
+  width: 50px;
+  height: 50px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #1db954;
+  color: #000;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .28);
+  cursor: pointer;
+}
+
+.spx-play svg {
+  width: 23px;
+  height: 23px;
+  fill: currentColor;
+  stroke: none;
+}
+
+.spx-list {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  background: #121212;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+  padding: 4px 0 18px;
+}
+
+.spx-list::-webkit-scrollbar {
+  display: none;
+}
+
+.spx-track {
+  width: 100%;
+  min-height: 56px;
+  padding: 7px 16px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.spx-track:active {
+  background: #1a1a1a;
+}
+
+.spx-track-cover {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 3px;
+  background-color: #2a2a2a;
+  background-size: cover;
+  background-position: center;
+}
+
+.spx-track-cover.is-empty {
+  background: #2a2a2a;
+}
+
+.spx-cover-aquarium { background-image: var(--spx-aquarium); }
+.spx-cover-merry { background-image: var(--spx-merry); }
+.spx-cover-abba { background-image: var(--spx-abba); }
+.spx-cover-six { background-image: var(--spx-six); }
+.spx-cover-queen { background-image: var(--spx-queen); }
+.spx-cover-barbie { background-image: var(--spx-barbie); }
+.spx-cover-hamilton { background-image: var(--spx-hamilton); }
+.spx-cover-goodbye { background-image: var(--spx-goodbye); }
+.spx-cover-what { background-image: var(--spx-what); }
+
+.spx-track-copy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.spx-track-title {
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.22;
+  overflow-wrap: anywhere;
+}
+
+.spx-track-artist {
+  color: #b3b3b3;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.spx-track.is-playing .spx-track-title {
+  color: #1db954;
+  font-weight: 700;
+}
+
+.spx-track-more {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: #b3b3b3;
+  display: grid;
+  place-items: center;
+}
+
+.spx-track-more svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  stroke: none;
+}

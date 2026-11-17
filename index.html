@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#eadde6">
+  <title>Little iPhone 6 — Interactive Demo</title>
+  <link rel="stylesheet" href="phone-icon.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="whatsapp-media.css">
+  <link rel="stylesheet" href="whatsapp.css">
+  <link rel="stylesheet" href="x-media.css">
+  <link rel="stylesheet" href="x.css">
+  <link rel="stylesheet" href="instagram-media.css">
+  <link rel="stylesheet" href="instagram.css">
+  <link rel="stylesheet" href="notes.css">
+  <link rel="stylesheet" href="calendar.css">
+  <link rel="stylesheet" href="spotify-media.css">
+  <link rel="stylesheet" href="spotify.css">
+  <link rel="stylesheet" href="photos-media.css">
+  <link rel="stylesheet" href="photos.css">
+  <link rel="stylesheet" href="amazon-orders-media.css">
+  <link rel="stylesheet" href="amazon-orders.css">
+  <link rel="stylesheet" href="app-icons.css">
+</head>
+<body>
+  <!-- Reusable icon sprite -->
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></symbol>
+    <symbol id="i-chevron-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5L12 3l8.5 7.5"/><path d="M5.5 9v11h13V9"/><path d="M9.5 20v-5.5h5V20"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.8" cy="10.8" r="6.4"/><path d="M15.6 15.6L21 21"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.9a5.5 5.5 0 00-7.8 0L12 7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1.1 1L12 22l7.7-7.3 1.1-1a5.5 5.5 0 000-7.8z"/></symbol>
+    <symbol id="i-comment" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-8.5 8.3 9 9 0 01-4-.9L3 20.5l1.7-5a8 8 0 01-1.2-4A8.4 8.4 0 0112 3a8.4 8.4 0 019 8.5z"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10 14"/><path d="M21 3l-7 18-4-7-7-4 18-7z"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M7.5 7.5L12 3l4.5 4.5"/><path d="M5 12v8h14v-8"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4V3z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h3l1.5-2h7L17 7h3a1 1 0 011 1v11a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="i-flash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8.5a14 14 0 0118 0"/><path d="M6.5 12.5a9 9 0 0111 0"/><path d="M10 16.2a4 4 0 014 0"/><circle cx="12" cy="19.5" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="currentColor"><path d="M6.7 2.5c.6-.6 1.7-.5 2.3.2l2.3 2.8c.5.6.4 1.5-.2 2l-1.2 1c-.4.3-.5.8-.3 1.2 1.5 2.6 3.7 4.7 6.3 6.3.4.2.9.1 1.2-.3l1-1.2c.5-.6 1.4-.7 2-.2l2.8 2.3c.7.6.8 1.7.2 2.3l-1.4 1.4c-.8.8-2 1.2-3.1.9-4-1.1-7.6-3.3-10.5-6.2C5.4 12.1 3.2 8.5 2.1 4.5c-.3-1.1.1-2.3.9-3.1l1.4-1.4.1 2.5z"/></symbol>
+    <symbol id="i-phone-incoming" viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.57 1 1 0 01-.25 1.05l-2.2 2.17z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M2.7 8V2.7H8M2.7 2.7l5.6 5.6"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M3 3h2l2.4 11.2a2 2 0 002 1.6h8.7a2 2 0 002-1.6L21 7H6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5L7 4.5z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6.5 7l.8 14h9.4l.8-14M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.3"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 18.5h11a4 4 0 00.5-8 6 6 0 00-11.6-1.2A4.8 4.8 0 006.5 18.5z"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V4M5 11l7-7 7 7"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H4M11 5l-7 7 7 7"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M13 5l7 7-7 7"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5v5h-5"/><path d="M19.2 10A8 8 0 105.4 15.8"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"/></symbol>
+    <symbol id="i-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20V12M12 20V6M19 20V9"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.7" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5.5-8 11-8 11S4 15.5 4 10a8 8 0 1116 0z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0013 0M12 18v3M9 21h6"/></symbol>
+    <symbol id="i-speaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 15.2A8.5 8.5 0 018.8 4 8.7 8.7 0 1020 15.2z"/></symbol>
+    <symbol id="i-hourglass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10M7 21h10M8 3v4c0 2 1.5 3.2 4 5-2.5 1.8-4 3-4 5v4M16 3v4c0 2-1.5 3.2-4 5 2.5 1.8 4 3 4 5v4"/></symbol>
+    <symbol id="i-control" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h7M15 7h5M4 17h5M13 17h7"/><circle cx="13" cy="7" r="2.2"/><circle cx="11" cy="17" r="2.2"/></symbol>
+    <symbol id="i-accessibility" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2"/><path d="M5 8.5l7 2 7-2M12 10.5v5M8 21l4-5.5 4 5.5"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 18.5h11a4 4 0 00.5-8 6 6 0 00-11.6-1.2A4.8 4.8 0 006.5 18.5z"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 9V6a3 3 0 016 0v3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 10.5L12 15l4.5-4.5M4 20h16"/></symbol>
+    <symbol id="i-storage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="6" rx="2"/><rect x="3" y="13" width="18" height="6" rx="2"/><path d="M7 8h.01M7 16h.01"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 9h.01M9.5 9h.01M13 9h.01M16.5 9h.01M6 12h.01M9.5 12h.01M13 12h.01M16.5 12h.01M8 15h8"/></symbol>
+    <symbol id="i-signal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 20v-3M9 20v-6M14 20v-9M19 20V5"/><path d="M3 4l18 18" opacity=".25"/></symbol>
+    <symbol id="i-photo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.8"/><path d="M4 18l5-5 4 4 3-3 4 4"/></symbol>
+    <symbol id="i-backspace" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11v12H9l-6-6 6-6z"/><path d="M12 9l5 6M17 9l-5 6"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 10-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.6V21h-4v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 00.3-1.9A1.7 1.7 0 003 14H3v-4h.1a1.7 1.7 0 001.6-1 1.7 1.7 0 00-.3-1.9L4.2 7 7 4.2l.1.1a1.7 1.7 0 001.9.3A1.7 1.7 0 0010 3.1V3h4v.1a1.7 1.7 0 001 1.6 1.7 1.7 0 001.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 00-.3 1.9 1.7 1.7 0 001.6 1h.1v4H21a1.7 1.7 0 00-1.6 1z"/></symbol>
+    <symbol id="i-airplane" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 16l-8-4.5V5a1.5 1.5 0 00-3 0v6.5L2.5 16v2l8-2.5V20L8 21.5V23l4-1 4 1v-1.5L13.5 20v-4.5l8 2.5v-2z"/></symbol>
+    <symbol id="i-bluetooth" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10-5 4V3l5 4L7 17"/></symbol>
+    <symbol id="i-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="7" width="17" height="10" rx="2.4"/><path d="M21.5 10v4" stroke-linecap="round" stroke-width="2.4"/><rect x="5" y="9.4" width="10" height="5.2" rx="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-settings-gear" viewBox="0 0 64 64">
+      <g fill="currentColor">
+        <rect x="29" y="4" width="6" height="11" rx="2"/><rect x="29" y="4" width="6" height="11" rx="2" transform="rotate(45 32 32)"/><rect x="29" y="4" width="6" height="11" rx="2" transform="rotate(90 32 32)"/><rect x="29" y="4" width="6" height="11" rx="2" transform="rotate(135 32 32)"/><rect x="29" y="4" width="6" height="11" rx="2" transform="rotate(180 32 32)"/><rect x="29" y="4" width="6" height="11" rx="2" transform="rotate(225 32 32)"/><rect x="29" y="4" width="6" height="11" rx="2" transform="rotate(270 32 32)"/><rect x="29" y="4" width="6" height="11" rx="2" transform="rotate(315 32 32)"/>
+        <circle cx="32" cy="32" r="20"/>
+      </g>
+      <circle cx="32" cy="32" r="8" fill="#54575c"/>
+      <circle cx="32" cy="32" r="5" fill="#bfc2c7"/>
+    </symbol>
+
+    <!-- Brand marks (Simple Icons paths) -->
+    <symbol id="brand-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+    <symbol id="brand-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1018.39 4.144a1.44 1.44 0 00-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 114.008 3.9921A3.9996 3.9996 0 018 12.0077"/></symbol>
+    <symbol id="brand-openai" viewBox="0 0 24 24"><path fill="currentColor" d="M22.2819 9.8211a5.9847 5.9847 0 00-.5157-4.9108 6.0462 6.0462 0 00-6.5098-2.9A6.0651 6.0651 0 004.9807 4.1818a5.9847 5.9847 0 00-3.9977 2.9 6.0462 6.0462 0 00.7427 7.0966 5.98 5.98 0 00.511 4.9107 6.051 6.051 0 006.5146 2.9001A5.9847 5.9847 0 0013.2599 24a6.0557 6.0557 0 005.7718-4.2058 5.9894 5.9894 0 003.9977-2.9001 6.0557 6.0557 0 00-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 01-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 00.3927-.6813v-6.7369l2.02 1.1686a.071.071 0 01.038.052v5.5826a4.504 4.504 0 01-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 01-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 00.7806 0l5.8428-3.3685v2.3324a.0804.0804 0 01-.0332.0615L9.74 19.9502a4.4992 4.4992 0 01-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 012.3655-1.9728V11.6a.7664.7664 0 00.3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 01-.071 0l-4.8303-2.7865A4.504 4.504 0 012.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 01.071 0l4.8303 2.7913a4.4944 4.4944 0 01-.6765 8.1042v-5.6772a.79.79 0 00-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 00-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 01.0284-.0615l4.8303-2.7866a4.4992 4.4992 0 016.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 01-.038-.0567V6.0742a4.4992 4.4992 0 017.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 00-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></symbol>
+    <symbol id="brand-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></symbol>
+    <symbol id="brand-spotify" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></symbol>
+    <symbol id="brand-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol>
+  </svg>
+
+  <main class="stage" aria-label="Interactive iPhone 6 demo">
+    <div class="phone-slot" id="phoneSlot">
+      <div class="phone" id="phone">
+        <span class="side-button side-mute" aria-hidden="true"></span>
+        <span class="side-button side-volume-up" aria-hidden="true"></span>
+        <span class="side-button side-volume-down" aria-hidden="true"></span>
+        <span class="side-button side-power" aria-hidden="true"></span>
+        <div class="phone-inner">
+          <div class="top-bezel" aria-hidden="true">
+            <span class="front-camera"></span>
+            <span class="speaker"></span>
+            <span class="ambient-sensor"></span>
+          </div>
+
+          <div class="screen is-locked" id="screen">
+            <!-- HOME -->
+            <section class="home-screen" id="homeScreen" aria-hidden="true" inert aria-label="Home screen">
+              <div class="home-wallpaper"></div>
+              <div class="home-shade"></div>
+              <div class="status-bar status-home">
+                <span class="status-time">3:30</span>
+                <div class="status-right" aria-hidden="true">
+                  <span class="signal-bars"><i></i><i></i><i></i><i></i></span>
+                  <svg class="status-icon wifi-icon"><use href="#i-wifi"></use></svg>
+                  <span class="battery-icon"><span class="battery-fill"></span></span>
+                </div>
+              </div>
+              <div class="home-content">
+                <div class="home-widget" aria-hidden="true">
+                  <div class="widget-date">
+                    <span class="widget-weekday">Sunday</span>
+                    <span class="widget-day">27</span>
+                    <span class="widget-month">December 2026</span>
+                  </div>
+                  <div class="widget-weather">
+                    <svg class="widget-sun"><use href="#i-sun"></use></svg>
+                    <span class="widget-temp">2°</span>
+                    <span class="widget-city">A DOLL'S HOUSE</span>
+                  </div>
+                </div>
+                <div class="app-grid" id="appGrid"></div>
+                <div class="dock" id="dock" aria-label="Dock"></div>
+              </div>
+            </section>
+
+            <!-- LOCK -->
+            <section class="lock-screen" id="lockScreen" aria-label="Lock screen. Swipe up to unlock.">
+              <div class="lock-wallpaper"></div>
+              <div class="lock-shade"></div>
+              <div class="lock-torch" aria-hidden="true"></div>
+              <div class="status-bar status-lock">
+                <span class="sos-label">SOS</span>
+                <div class="status-right" aria-hidden="true">
+                  <span class="signal-bars"><i></i><i></i><i></i><i></i></span>
+                  <svg class="status-icon wifi-icon"><use href="#i-wifi"></use></svg>
+                  <span class="battery-icon"><span class="battery-fill"></span></span>
+                </div>
+              </div>
+
+              <div class="lock-content">
+                <p class="lock-date">Sunday, December 27, 2026</p>
+                <p class="lock-time">3:30</p>
+              </div>
+
+              <div class="lock-notifications">
+                <div class="lock-notification" id="lockWhatsAppNotification" role="status" aria-label="WhatsApp message from Torvald">
+                  <div class="lock-notification-top">
+                    <span class="lock-notification-icon is-wa-image" aria-hidden="true"></span>
+                    <span class="lock-notification-app">WHATSAPP</span>
+                    <span class="lock-notification-time">2:27</span>
+                  </div>
+                  <p class="lock-notification-sender">Torvald💕</p>
+                  <p class="lock-notification-preview">Dear Nora, This is not an intimidation letter. This is me asking you to come back to me, to our children, our family.</p>
+                </div>
+                <div class="lock-notification is-phone" id="lockPhoneNotification" role="status" aria-label="Missed call from Torvald">
+                  <div class="lock-notification-top">
+                    <span class="lock-notification-icon is-phone-image" aria-hidden="true"></span>
+                    <span class="lock-notification-app">PHONE</span>
+                    <span class="lock-notification-time">1:25 AM</span>
+                  </div>
+                  <p class="lock-notification-sender">Torvald (17)</p>
+                  <p class="lock-notification-preview">Missed Call</p>
+                </div>
+              </div>
+
+              <div class="lock-actions">
+                <button class="lock-action" id="flashlightButton" type="button" aria-pressed="false" aria-label="Flashlight">
+                  <svg class="lock-action-icon"><use href="#i-flash"></use></svg>
+                </button>
+                <button class="lock-action" id="lockCameraButton" type="button" aria-label="Open camera">
+                  <svg class="lock-action-icon"><use href="#i-camera"></use></svg>
+                </button>
+              </div>
+
+              <div class="unlock-cue" id="unlockCue" role="button" tabindex="0" aria-label="Swipe up to unlock. You can also press Enter.">
+                <svg class="unlock-chevron"><use href="#i-chevron-up"></use></svg>
+                <span>Swipe up to unlock</span>
+                <span class="home-bar" aria-hidden="true"></span>
+              </div>
+            </section>
+
+            <!-- APPS -->
+            <div class="app-layer" id="appLayer" aria-hidden="true" inert></div>
+            <div class="toast" id="toast" role="status" aria-live="polite"></div>
+            <audio id="inst-music" src="https://mp3tourl.com/audio/1794721840300-f91609a8-3528-4636-89ba-8cfc2ab1105d.m4a" loop preload="auto" hidden></audio>
+            <audio id="spotify-audio" preload="metadata" hidden></audio>
+          </div>
+
+          <button class="home-button" id="homeButton" type="button" aria-label="Home button">
+            <span class="home-square" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="whatsapp-data.js"></script>
+  <script src="whatsapp.js"></script>
+  <script src="x-data.js"></script>
+  <script src="x.js"></script>
+  <script src="instagram-data.js"></script>
+  <script src="instagram.js"></script>
+  <script src="notes.js"></script>
+  <script src="calendar.js"></script>
+  <script src="spotify.js"></script>
+  <script src="photos.js"></script>
+  <script src="amazon-orders.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

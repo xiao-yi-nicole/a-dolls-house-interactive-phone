@@ -1,0 +1,1382 @@
+/* ================================================================== */
+/* X — light-mode mobile app, scoped to .x-app                         */
+/* ================================================================== */
+
+.app-layer.x-instant {
+  transition: none !important;
+}
+
+.app-view.x-app {
+  background: #fff;
+  color: #0f1419;
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+.x-app button,
+.x-app input,
+.x-app textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.x-screens {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.x-screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.x-screen.is-active {
+  display: flex;
+}
+
+/* ---------- Home topbar ---------- */
+
+.x-home-topbar {
+  position: relative;
+  z-index: 5;
+  flex: none;
+  height: 50px;
+  padding: 0 12px;
+  border-bottom: .5px solid #eff3f4;
+  background: rgba(255, 255, 255, .97);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.x-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  color: #0f1419;
+}
+
+.x-logo svg {
+  width: 23px;
+  height: 23px;
+  fill: currentColor;
+}
+
+.x-avatar-button {
+  width: 31px;
+  height: 31px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  display: grid;
+  place-items: center;
+}
+
+.x-avatar-button .x-avatar {
+  width: 30px;
+  height: 30px;
+}
+
+.x-exit-button {
+  width: 31px;
+  height: 31px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #0f1419;
+  display: grid;
+  place-items: center;
+}
+
+.x-exit-button svg {
+  width: 19px;
+  height: 19px;
+}
+
+.x-avatar {
+  display: block;
+  flex: none;
+  border-radius: 50%;
+  background-color: #e7ecef;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 0 .5px rgba(0, 0, 0, .08);
+}
+
+.x-avatar-torvald { background-image: var(--x-avatar-torvald); }
+.x-avatar-nora { background-image: var(--x-avatar-nora); }
+.x-avatar-henrik { background-image: var(--x-avatar-henrik); }
+
+/* ---------- Tabs ---------- */
+
+.x-tabs {
+  flex: none;
+  height: 43px;
+  display: flex;
+  border-bottom: .5px solid #eff3f4;
+  background: #fff;
+}
+
+.x-tab {
+  position: relative;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  color: #536471;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.x-tab.is-active {
+  color: #0f1419;
+  font-weight: 700;
+}
+
+.x-tab.is-active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 54px;
+  height: 2.5px;
+  margin-left: -27px;
+  border-radius: 2px;
+  background: #1da1f2;
+}
+
+/* ---------- Tweet feed ---------- */
+
+.x-feed,
+.x-profile-scroll {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  background: #fff;
+  scroll-behavior: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+.x-feed::-webkit-scrollbar,
+.x-profile-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.x-tweet {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 10px 14px;
+  border-bottom: .5px solid #eff3f4;
+  background: #fff;
+}
+
+.x-tweet-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.x-tweet-avatar {
+  width: 38px;
+  height: 38px;
+  margin-top: 1px;
+}
+
+.x-avatar-link {
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.x-name-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #0f1419;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  cursor: pointer;
+}
+
+.x-name-link:active,
+.x-avatar-link:active {
+  opacity: .75;
+}
+
+.x-tweet-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 3px;
+  row-gap: 1px;
+  min-width: 0;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.x-tweet-name {
+  color: #0f1419;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.x-verified {
+  display: inline-grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  flex: none;
+  color: #1da1f2;
+  vertical-align: -2px;
+}
+
+.x-verified svg {
+  width: 14px;
+  height: 14px;
+}
+
+.x-handle,
+.x-time {
+  color: #657786;
+  font-size: 10.5px;
+  line-height: 1.25;
+}
+
+.x-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: normal;
+}
+
+.x-calendar {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -.13em;
+}
+
+.x-dot {
+  color: #657786;
+  font-size: 10.5px;
+}
+
+.x-tweet-text {
+  margin: 4px 0 7px;
+  color: #0f1419;
+  font-size: 12.5px;
+  line-height: 1.42;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.x-tweet-text.x-tweet-text-large {
+  font-size: 12.5px;
+}
+
+.x-deleted-note {
+  margin: 0 0 5px;
+  color: #657786;
+  font-size: 9.5px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.x-limited {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 1px 0 7px;
+  color: #657786;
+  font-size: 9.5px;
+  line-height: 1.3;
+}
+
+.x-limited svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+/* ---------- Stats ---------- */
+
+.x-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  margin-top: 6px;
+  color: #657786;
+  font-size: 8.5px;
+  line-height: 1;
+}
+
+.x-stat {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.x-stat svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  flex: none;
+}
+
+/* ---------- Quote tweet ---------- */
+
+.x-quote {
+  margin: 7px 0 2px;
+  padding: 8px 9px;
+  border: 1px solid #cfd9de;
+  border-radius: 12px;
+}
+
+.x-quote-head {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.x-quote-avatar {
+  width: 19px;
+  height: 19px;
+}
+
+.x-quote-name {
+  color: #0f1419;
+  font-size: 10.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.x-quote-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: #657786;
+  font-size: 9.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.x-quote-text {
+  margin: 4px 0 0;
+  color: #0f1419;
+  font-size: 11px;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Deleted-tweet screenshot inside a quote ---------- */
+
+.x-deleted-shot {
+  margin-top: 7px;
+  padding: 8px;
+  border: 1px solid #d7dee2;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.x-shot-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.x-shot-avatar {
+  width: 22px;
+  height: 22px;
+}
+
+.x-shot-ident {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.x-shot-ident strong {
+  color: #0f1419;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.x-shot-ident span {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: #657786;
+  font-size: 8.5px;
+}
+
+.x-shot-text {
+  margin: 6px 0 0;
+  color: #0f1419;
+  font-size: 10.5px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Nora threads ---------- */
+
+.x-thread {
+  border-bottom: .5px solid #eff3f4;
+  background: #fff;
+}
+
+.x-thread .x-tweet {
+  border-bottom: 0;
+}
+
+.x-thread-main {
+  align-items: stretch;
+  padding-bottom: 0;
+}
+
+.x-thread-main > .x-tweet-main {
+  padding-bottom: 5px;
+}
+
+.x-thread-rail {
+  flex: 0 0 38px;
+  width: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.x-thread-line {
+  display: block;
+  flex: 1 1 auto;
+  width: 2px;
+  min-height: 8px;
+  background: #cfd9de;
+}
+
+.x-thread-replies {
+  padding: 0 14px 7px 14px;
+  background: #fff;
+}
+
+.x-reply {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  min-height: 35px;
+}
+
+.x-reply.is-nested .x-reply-content {
+  margin-left: 8px;
+}
+
+.x-reply-avatar {
+  width: 30px;
+  height: 30px;
+}
+
+.x-reply-content {
+  flex: 1;
+  min-width: 0;
+  padding: 5px 0 8px;
+}
+
+.x-reply-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 3px;
+  color: #657786;
+  line-height: 1.25;
+}
+
+.x-reply-head strong {
+  color: #0f1419;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.x-reply-head .x-handle,
+.x-reply-head .x-time {
+  font-size: 9px;
+}
+
+.x-reply-text {
+  margin: 2px 0 0;
+  color: #0f1419;
+  font-size: 11px;
+  line-height: 1.38;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- WhatsApp screenshot in Nora's post ---------- */
+
+.x-wa-shot {
+  position: relative;
+  margin: 7px 0 2px;
+  overflow: hidden;
+  border: 1px solid #d7dee2;
+  border-radius: 12px;
+  background-color: #f5cbd8;
+  background-image: none;
+  user-select: none;
+}
+
+.x-wa-body {
+  padding: 10px 7px;
+}
+
+.x-wa-body .wa-row {
+  margin-bottom: 5px;
+}
+
+.x-wa-body .wa-bubble-wrap {
+  max-width: 86%;
+}
+
+.x-wa-body .wa-bubble {
+  padding: 4px 7px 3px;
+  border-radius: 6px;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.x-wa-body .wa-bubble.in {
+  background: #fff;
+}
+
+.x-wa-body .wa-bubble.out {
+  background: #dcf8c6;
+}
+
+.x-wa-body .wa-bubble.in::before,
+.x-wa-body .wa-bubble.out::before {
+  display: none;
+}
+
+.x-wa-body .wa-meta {
+  height: 8px;
+  margin-top: 1px;
+}
+
+.x-wa-body .wa-checks svg {
+  width: 14px;
+  height: 9px;
+}
+
+.x-wa-body .wa-text {
+  white-space: pre-wrap;
+}
+
+/* ---------- Profile topbar, banner and details ---------- */
+
+.x-profile-topbar {
+  position: relative;
+  z-index: 5;
+  flex: none;
+  height: 47px;
+  padding: 0 8px;
+  background: rgba(255, 255, 255, .97);
+  border-bottom: .5px solid #eff3f4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.x-profile-topbar > strong {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #0f1419;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.x-back-button {
+  width: 31px;
+  height: 31px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #0f1419;
+  display: grid;
+  place-items: center;
+}
+
+.x-back-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.x-profile-topbar-spacer {
+  width: 31px;
+  height: 31px;
+}
+
+.x-profile-scroll {
+  background: #fff;
+}
+
+.x-banner {
+  width: 100%;
+  height: 125px;
+  background-color: #cfd9de;
+  background-size: cover;
+  background-position: center;
+}
+
+.x-banner-torvald { background-image: var(--x-banner-torvald); }
+.x-banner-nora { background-image: var(--x-banner-nora); }
+
+.x-profile-avatar-wrap {
+  position: relative;
+  height: 42px;
+  padding-left: 14px;
+}
+
+.x-profile-avatar {
+  position: relative;
+  top: -39px;
+  width: 78px;
+  height: 78px;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+}
+
+.x-following-button {
+  position: absolute;
+  right: 14px;
+  top: 4px;
+  height: 28px;
+  padding: 0 15px;
+  border-radius: 999px;
+  background: #0f1419;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1;
+}
+
+.x-profile-info {
+  padding: 7px 14px 0;
+}
+
+.x-profile-name-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-width: 0;
+}
+
+.x-profile-name {
+  color: #0f1419;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -.02em;
+  overflow-wrap: anywhere;
+}
+
+.x-profile-handle {
+  margin-top: 2px;
+  color: #657786;
+  font-size: 11px;
+}
+
+.x-protected {
+  display: inline-grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  flex: none;
+  color: #536471;
+}
+
+.x-protected svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+}
+
+.x-profile-bio {
+  margin: 8px 0 0;
+  color: #0f1419;
+  font-size: 12px;
+  line-height: 1.38;
+  white-space: pre-wrap;
+}
+
+.x-profile-joined {
+  margin: 6px 0 0;
+  color: #657786;
+  font-size: 10px;
+}
+
+.x-profile-counts {
+  margin: 5px 0 11px;
+  color: #657786;
+  font-size: 10px;
+}
+
+.x-profile-counts strong {
+  color: #0f1419;
+  font-weight: 700;
+}
+
+.x-profile-feed {
+  border-top: .5px solid #eff3f4;
+}
+
+/* ---------- Misc ---------- */
+
+.x-app .x-avatar,
+.x-app .x-logo,
+.x-app .x-stats,
+.x-app .x-tweet-text {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.x-app :focus-visible {
+  outline-color: #1da1f2;
+}
+
+/* ---------- Nora thread alignment and type fixes ---------- */
+
+.x-thread .x-tweet-text,
+.x-thread .x-reply-text {
+  color: #0f1419;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.x-reply {
+  align-items: stretch;
+  gap: 9px;
+}
+
+.x-reply .x-thread-rail,
+.x-thread-main .x-thread-rail {
+  align-self: stretch;
+}
+
+.x-reply .x-thread-line,
+.x-thread-main .x-thread-line {
+  flex: 1 1 0%;
+  min-height: 0;
+  margin-bottom: -1px;
+}
+
+.x-reply-avatar {
+  width: 38px;
+  height: 38px;
+}
+
+.x-reply-content {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.x-reply.is-nested .x-reply-content {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.x-reply-head strong {
+  font-size: 13.5px;
+  color: #0f1419;
+}
+
+.x-reply-head .x-handle,
+.x-reply-head .x-time {
+  font-size: 10.5px;
+}
+
+/* Post and comment body copy only. */
+.x-app .x-tweet-text,
+.x-app .x-reply-text,
+.x-app .x-tweet-text.x-tweet-text-large {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.x-app .x-quote-text,
+.x-app .x-shot-text,
+.x-app .x-shot-quote-text {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.x-tweet-text p,
+.x-quote-text p,
+.x-shot-text p,
+.x-shot-quote-text p {
+  margin: 0 0 12px;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.x-tweet-text p:last-child,
+.x-quote-text p:last-child,
+.x-shot-text p:last-child,
+.x-shot-quote-text p:last-child {
+  margin-bottom: 0;
+}
+
+.x-shot-stats {
+  margin-top: 7px;
+}
+
+.x-shot-stats .x-stats {
+  margin-top: 0;
+  font-size: 7.5px;
+}
+
+.x-shot-stats .x-stats svg {
+  width: 10px;
+  height: 10px;
+}
+
+.x-shot-quote {
+  margin-top: 8px;
+  padding: 7px;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.x-shot-quote-head {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.x-shot-quote-avatar {
+  width: 18px;
+  height: 18px;
+}
+
+.x-shot-quote-ident {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.x-shot-quote-ident strong {
+  color: #0f1419;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.x-shot-quote-ident span {
+  color: #657786;
+  font-size: 8.5px;
+}
+
+.x-shot-quote-text {
+  margin-top: 4px;
+  color: #0f1419;
+}
+
+.x-app .tweet-content,
+.x-app .quote-content,
+.x-app .screenshot-content,
+.x-app .x-tweet-text,
+.x-app .x-quote-text,
+.x-app .x-shot-text,
+.x-app .x-reply-text,
+.x-app .x-shot-quote-text {
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.x-app .tweet-content p,
+.x-app .quote-content p,
+.x-app .screenshot-content p,
+.x-app .x-tweet-text p,
+.x-app .x-quote-text p,
+.x-app .x-shot-text p,
+.x-app .x-reply-text p,
+.x-app .x-shot-quote-text p {
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  margin: 0 0 12px 0 !important;
+  padding: 0 !important;
+}
+
+/* Raw X-style tweet structure used by Torvald's special quote. */
+.x-app .twt {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 10px 14px 11px;
+  border: 0;
+  border-bottom: 1px solid #eff3f4;
+  border-radius: 0;
+  box-shadow: none;
+  background: #fff;
+  color: #0f1419;
+  box-sizing: border-box;
+}
+
+.x-app .twt-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 0;
+  overflow: visible;
+}
+
+.x-app .twt-icon-container {
+  flex: none;
+}
+
+.x-app .twt-icon {
+  display: block;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.x-app .twt-iconquote {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.x-app .twt-id {
+  flex: 1;
+  min-width: 0;
+  padding-left: 0;
+  overflow: visible;
+  line-height: 1.25;
+}
+
+.x-app .twt-name {
+  color: #0f1419;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.x-app .twt-name .x-name-link {
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.x-app .twt-name .x-verified {
+  vertical-align: -2px;
+}
+
+.x-app .twt-handle {
+  color: #657786;
+  font-size: 10.5px;
+  line-height: 1.25;
+}
+
+.x-app .twt-content {
+  margin: 4px 0 7px 47px;
+  color: #0f1419;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.x-app .twt-content p {
+  margin: 0 0 12px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.x-app .twt-content p:last-child {
+  margin-bottom: 0;
+}
+
+.x-app .twt-quotebox {
+  margin: 10px 0 0 47px;
+  padding: 12px;
+  border: 1px solid #cfd9de;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.x-app .twt-quotebox > .twt-header {
+  margin-bottom: 6px;
+}
+
+.x-app .twt-quotebox .twt-handle,
+.x-app .twt-image-container .twt-handle {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.x-app .twt-contentquote {
+  margin: 0 0 10px;
+  color: #0f1419;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.x-app .twt-hl {
+  color: #0f1419;
+  font-size: inherit;
+}
+
+.x-app .twt-image-container {
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid #cfd9de;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.x-app .twt-image-container > .twt-header {
+  margin-bottom: 6px;
+}
+
+.x-app .twt-image-container .twt-handle {
+  font-size: 10px;
+}
+
+.x-app .twt-image-container .twt-content {
+  margin: 0;
+}
+
+.x-app .twt-timestamp {
+  margin: 7px 0 0 47px;
+  color: #657786;
+  font-size: 10.5px;
+  line-height: 1.3;
+}
+
+.x-app .twt-sep {
+  height: 1px;
+  margin: 4px 0;
+  border: 0;
+  background: #e6e6e6;
+}
+
+.x-app .twt > .x-stats {
+  margin-left: 47px;
+  opacity: 0.5;
+}
+
+.x-app .twt-stat1 {
+  margin-left: 47px;
+  color: #657786;
+  font-size: 9.5px;
+  line-height: 1.4;
+}
+
+.x-app .twt-stat1 strong {
+  color: #0f1419;
+  font-weight: 700;
+}
+
+:root { --x-avatar-henrik: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wgARCACgAKADASIAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAABQYDBAcCAQD/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAIDBAX/2gAMAwEAAhADEAAAAVmC574fo0PiXtDPiXLUOe7kCqbsBqp0FZ2pdXOBo+W/Yh7kkqHqaTKRltS5hnhHlhlM4ISy5JOnwa5hrZzm6a4r3TVvi96ao8FK4UbFjuoY7fRHvrfWWjzbiaqKYqSVnRNdbIP5zSoU5DlLWuYyPQ0eScRD+L3VVvbkJHfbPualHejavLNNXsFylFmAUp6G9flSV1CbJ3OmXi/zmF+W68xQXYyYfpPAh5n6qFBveaV0uBA9DWvHzKzGaMM7I7XqZwYMD6h2o0iuMM4q3E8Yne47AdJD1mLem1lY2mxbotJODM1Ft+uy8Ea0RDsVvDpCk0zKtOzRw2o8pW3VVwgFTV9oVuTWjQw53p2WlYPTs1B6g8fUgliWNV5hUHjMDnH1V1WtLByJFdrEKZlz/wA1lhE31xeqjOis5iryxUpz6SVSfi1oEPWeaaSpS7cBK2wJrE25S3thnAdzzYr0NVS22jnOWBGVZ10JBCQCWaOnJSsxrhjQF0ZUYiFn1ldG3quL7KWWlX5qDAAbC59BWOuTBipL5gdCdS8Ha3buDfaHy1rWjQqB0PyVceRAdKls2Uatm//EACgQAAICAgICAgEEAwEAAAAAAAMEAQIABRESEyEGFDEQFSIkIyUyQf/aAAgBAQABBQKcmOciudc6znXOmdYjL2oOv3B9q9SU6+opnT1xnH61jnOnvpnjzpnTOvGdOck/9jhjLqBOo1rtfWo+quxiK2jJzjnOuce+s5EZ+c8fvx+umdMmuMzfxyFCmu+O6sSic8ZxExvU1E4Q5ua1OM651yc/949xXnOPfXOuTT104zrhvrAJAQkHrzDsvYg4yXlKV+UsAOnrA0hbrkUya8R1yKZ1zj11/j1zpnX3MZxj1acalYnTXqfTQdQbcXa1K9NO9pjRRNcYVLU9dJmJpnjzrnSc6Z19RXOMnOM4x1eTIfHC3IeGOh+YnN1G4+tv3K10yhYunEZFcmPU1nOmRXOPVs4zrznXJrxMVyscYomJeCj8haKwSWNTQtL65cI6C+oen+TPHnTOucZxnGceojOIzjjOMrXIHnlp0sS81O7ypXc7Yx/ugAobaTei202Y6p7yKQO4WBzGTXJjIyfxxnGTkR75qMbLDD17sl1IEXFNlv3fjRmKU+KoJpmr2YjTzW/1ajh2nBQFMEie1GzhI4yf0n9eMnrQbDhHDyHsPeVmpI7iMoyN3X/Idx9q2tD5myXr2txN9jH9+s9LjH4UdSwRlKYycmfUfiMiM2rBJbXnlj+Aqbe4LwIfav7gwvrppN7C+8jqg7CjRBjtYgL/AG3kh2M0+SAV0hbg29q8ZMesrkZa0CAWZbxZ0Sq39zebI2vH+1LcEqYcDkFYO4Qgu7mtG4r9TcW1mrrzbV/9lNa5Tea41WKva3j3Meh2y1xhC7tl2qwNVhnipm0E6qABBPLUgEoFVjaU0uugLo1KSxsXFkK6gh3K6yYFsdXakmoWezZLxT481NHbfm2Dj3szCMzVBVwJvjgZohX6u5qzdVwVqwEwKF+UlaoDNeOCK7Lex5iL0V12mrWdYP8Ax7tXz2dDRoQDCKW9VihzvBRY6Wy+pWTi0BpE1mn83VqEkZqHuNkutbZt/uyTfrvNqQS+pW8ctxF0tfW94f8A4bIDhFNg67IljGvQY5ZZJrZn9sthEWjaVaIEDY7Fw+wX+NjO1f49uU6hLNHiiGZVwNwO1taRrqjZ2Yqx2KTlTUs0WPsq84AcsbO4gjZcsVpnXAga2pZrLxPzsV7mSl4q9lm7a/5DoxCHos3ml+/XWk7B3Q5oTt/VDWpWBRWMvMTN44aN1JrUZn7ppGBdMX2nHnApD1xprvTf91+PHaO2gs6Bv42+tb45sFky9u0nbCGjoob2G5sUuHrNBxf+wuXqO5ItjVuGgs0Ijp9YZjGWUK0JuJ+vcRsrbowbjygWcvFa7kWbBp8lsD8j241dUR3b7qmoWqTaJACzctqHYZAYcgbbgiBVIf4xQcsxrRQDQsBXsS+uHNjCIAH5uevDGuQiB+Hwj2Gzh3c634wB9IPxXVhtTW68Je0V3Wz2qd82lq2PRq3jVcIOjRy3xu3kxNin15rwMnWo7FmmMEte+uD59wS02J//xAAbEQEAAgMBAQAAAAAAAAAAAAABESAAEDBAIf/aAAgBAwEBPwGpwfeS3PEanJ02GMftjRyM/8QAIBEAAgIBBAMBAAAAAAAAAAAAAAEQEQISITFBIDBRA//aAAgBAgEBPwEuU16W4XHofrSEmPHzS2hsQ14I02KLjsynYZiNlfYyOp0lCEWdmRwOHvC5FDMuSvpmai6HkuoqOoR+h//EADwQAAIBAgQDBQUFBgcBAAAAAAECAwARBBIhMRMiQTJRYXGBBRAgI0IUMFJiwXKRobHR4RUkM0NjgtKi/9oACAEBAAY/Avj3tWZiK7OlZkN/dtVhVvgt9wIoyniWpZo8RBMGNsoWs+Kwu22UWpikeNQblslwKtHMJYj9YFZlIb3X9+3w6fAY8Pbin+Apoo+XFnt33P8AauO0d5W+pq2q1qPCjEKObvlH8akjVjJH+K3u2q/ut7z8G3uLYkM2bYLymkbA4Rv232T+tCOM3yaHwol3VfM1eSdFHeTUcmHkB/UVnQvYjr7tq6fc7VpUBxKl4M9io3vWMwnEy2Oy6gevfXAQq2/NXBlxfCJbsootbzrD/IWX7Mb2I7XeT/OpcU80ixEH5bHa/dSrHm176293h93YByUYOET6vCsbHKDH2fDarNypVlIpkwuIgSNtLAHNbxNRwhhna2o6WpQw5vxbivOtvi2+NnRAgP0+NBnGx0HdRXjPGeuTe1BEgDL/AMkjH9aeIDkGp6lRQaKxia2hprDQG3wae/b4yFkVsu4U3psl/O9Tuk+Rs3IVOtR4UYlRn3OXamiEsvFylmdjfX9assYDAaNvWSPFOFPTeuH7RuzHsyIP51xYJFkTvH3TSubKouTRBOSP6YxWSAJeXe9LhZIyiOhyMDYht6yJi7AajMl7+dPNi8SxsvMw0UenWm4akKx0U1Zum/nWUVhx3kipJoHKOjW0oRzgRvsG+lv6fcGSQ5VG5rhglIPwjr51nXTqRWF1uLUJYzZkbMp8RUWLQ2V0zb7d9fZ4G+Qv/wBnvpWIuE5zR5iaymwHfesLEmmVb27qxxYaXsDXzdzrapIZ3LSwtufw9PjbDN/phrKPGj5UXmaNE2zMbUhixCSkbZda1pvZ0TfLZrmuavtWHwsUkbH5l+0B09K5Rwyd0vqfKtWCDdtOgrEYg6Wtapp27Cvt3tW2aVuvQUhkPLP8s/pVjWnwNK2yi9TPJPGS5utjtT4hlMk1tE/9GvmNoNT+GNafDRaKgui/qfGlItrQ5bmkwwbmc0qRyICOXTpXEjZYZVPKVHKx/SpBxOVe0COaptxZKnctlRTdqYwIxF9zWxVh1AqLFD6hzeDdfgM0zhUHU0MmOWBAdt7+dcfDyx7XuDt51ioVI1tqKygDXmN+tMZjoDlVb30qV5DosjBVG5ppJ5DBH9CKN6llIHIlgw3rjTKkkliozC/8t6KIBiMQg5YraJ4msXNiWJuKm7rVil4IcZr69KOSNMu2bpRFwNNutPgpOxLqv7Q+BkkySRRdL8o864i59dsgAy/2rOuIMbW6J/eniJJHeVsadZc0kLc3Lun9qU58yNqr9DTZlsl81qsVsvlWcfXrevsHsfVzytiv/P8AWnRdbi7Od2PjRbMtyLb0ebcGpY4Ml2NXllS1u6nzNuaWZW+YpzD0pJl7LjMPdNKl84Flt31nxZ40nj2R6VYaURmRm8TqKEseUTx307xQaz3b6W8D1rhli2Dl1t+DxFJZs1xv31ZSt/za0nsbDNlAUcZ16/l8q+0eFgKkG5C9rvpUwyScZjldz2cl7+lKy6a7d1GSEDMR1pFm55mWriLW1rmslzbrXCOvDYr+vulixOIVcQ2uf6VNLG5zlRbTrQ9j+zOUsQjFNye69SYXDScaSLSbFMbRo34VG7Gs0GKTGov+03K3pTGTMCwyZX0ynqCKWRhk8qh7xpvWZ9PKsVPi+wpLnW16zQfLQdL6U19Pzd2lFJNidKLrrre9Qp3nW3dvT4kjiy326CrtprYJQ1ubXrGYPrfiL+vuyo6IQb85tf1qzpqp6jQ0vtBlLEsXHjff1qLhMr57uWXqb+44nDgDFLt/yeBpsM1wQdtiKgP159aAFc58/SjGEJ7xeig9M1cvavtRLLr0NqXxFqbM7ZiBcdKuim29jTc2eRvprDy3teTX1o0J/a/tJ8Trfgx6JXCxEVx0PUeVOQcPPgyb2kkyEepqX2XxScxzRoSND1AOxrKb2IoxSs/E0FkGp7qPtX2XMljrJFIcpPTMPDxrDRtnWXOdH3FWZmJXcgU2Qna+tEtqDsa/KaRq4P8AuG4VbWpsas8cQibLzi96yTzOW3sF3/fXAwUfCXvO9cWXXN1pGHRgaOmlXhSb/qWrSfGx/wDdqXD4vEzyBdcsjXrevs0cwPc5HMK/z+aeCRTDKyvt3beNJHg5I0SHTIwu6eTdBSQyoVjsXRrcqeK93iv7qeN9JI9KzcP5q66UIcOmYO182g/jSiaSN5D9K9PWk6W3ArNLKx4YtGCdhUIbTPdz60c6qxr5belWc8vh1oCrNfSr8SZf2XNGVsbiERBmZi17D91SY0xLKpsqCbuHfahiWZos300GfM+moNLJDhlVl2IqTHosvCKCOS43t1HlX+GYeL7Q+ZZA8Z5BrS4te8xP6dn+H8q7ANGaGTgt2cu+lAyvfxvRN/70MLYFidPOkhGWyDLvbau3cW7tzXbOvLtVj0rDxfnufIa0b9a//8QAJRAAAgICAgEFAQEBAQAAAAAAAREAITFBUWFxgZGhscHR4fDx/9oACAEBAAE/IamgIZTiYeYdflRVgXKEH7hQWLhMw8jKaXRcG9PM1KTc1qWVSqCFz1hIMkYtXAAC1mAVgKKyXIEQ3o+kGxcuj8Q01CGkQhCByAMmgOYsYtKo8LcBFye1N4xA1HcQxMm1oAvzxEBjVRIUBGBpfiACxCeSLXDg8DNTisQwpHzCmCvcRSBH5IzcJ8uMNiWaaCvJCMLIbm6P4gK2qsIHWhL0Q9oThAQaxLGJPJwHB+4qtYJAIwm++YhjcBSudBXEBdRw2o4hCxBoQmwUYGq4G6gD6IRJH5LpTaJBw9j6ikUlG/sx6JXxAjBQwBBwCD5uaDGI8jvkN32I8sAwIAe11iEjWeHDXT0lCMpfADepS16xqcFwSc4tTrBT9gCmYFpIWr5R0qRsgKRg5poIFsYPkhAjIJJRJPMLHoLotLXDSSH8OTAtaRAt21+QUIAGe80y8ykSG4CqwxCGUu5tcBMtdwKIVrmdSmZEDJoTKAckQ7y8AX/UsQBUGBYES3BQATzFQSJ+I6ea9yklPxFnwToYdtkDChkQGiWgSliD4+IDAcLBmiuAbbEDDEIx1LBwSPMLpDA1aX5OFcjCL9QMsAZoi09PmYyLOG+0TnyBOwRJodQN15nD5A1v2ldGgVCMmNQnq/MKXm4WLpL4hNN9QmUhvEu7ihiFjQ1CpQjJZHiDgxgQrFQeAw2G/EBmyKCW19iFxpADUjvxKZRijhXdKEG1mDLc+FcNyqbAJ7ioF6wfHQfkEMMNx54iQQqcHZm2ArNuLoxACiNQLcIfCFgTEcQwvaKA75MenIiBlQWuYmnYPtR7+EBdEuELxj/oh5hatEy1p9x3yFDfL0gMlzs/kCJFUAzjcY6EJ5H76wiSZRyfr4hTRqcYBByjU3iEdVLDuLpDZNCKYGM3f+JSrDIS7ggAFahuUPIxgjEsWUNOr0IMNlHR+R1x7xdjPYsD3+oCAlEHJdQGisga/wCxBZmeQn/JcIOguEGBd1cDuIqA2EtvFiUWYGEcQTYhHyjQZIBFzC6BKSbhgQGnx/1x8b63HcK2MIaDknQzGFXyoPYbk8h8bgUzQxDKMKWE4FBjK+5dOyX/AGIsFDPwGX7QBZYVcBoQhwIKI6Mnr+wiA5IWTcIIDi6Z/pe8A0BZImEZxg3YUVu2cr01XGOpiV4nQ3oD9TGNgKAukP8AmYsgM7X6FMyHTBiB6sE5IIQ0Nn0EFBHVrUYX9j5jUbVjvAXhAMaQ87EMkSFwL9pcmcTR8Ew+I0HzrxGAqB5gtzKigeCg94eKKLuMMF4e8EKAfox7KBHVk0oI36DY1NlqKeO/foHofZgQ2yEAcixlw6xpFrdcDEKDVJh5mDCgZwxPnFSgbmQEcUVtgHFymyUccxj1zt+npBLzqyPDMpDoQWHmYLDMNs+8W6WCL5QuypycCv3H1FBzWozyjE9YOxz26goFrkOBaBF+UCm4JAkfSBp4ZVXWjcA0bva1NbKBbttU+YMxAZkDBzhsKgisVW1LRgjmfrXI6RZTKOB5BRcXL4ZDMAgjZkeJWIEU0P8AyECZ74teIEAIpA44irun3aarv1hD7w+/KixQ+4hZzIKzgbHswVeTaA/I5zchPozZMbTxYZ+In3gAkEGhK8Q+OgrDJu/0GxFLiSRwD+uIWZkwwQSDL4NXIa8A7jw8lt2UT4mY5FjRDcELvsCAAg2VevUdbuAZ+ENcmAJiIaAV54gprzRUVd241LPonig+5QKAlKgADrDKmUQDZuLxrhfGgNmFYHvHEChySBAm2zCDzLv1hZqhGEXoDj2gUiFKulmOMEdxjv1goQIKMHIFoWCWB/kr07VKDBgxkSi3J77lEZLCkfM0lGRx/kckppZJaGhjYrW8D2EaJigCVy1AGgbML0l74TQQV6GUQwhBAdAOOEMfAkC7HIOiI+MMIAWCdHUM4wjZuJ53MbgRZ4OoT5eD6RMcklka6h8tDCWLDiBIVRh+c+xryHiAViXr/wA8S2dhkTAC2DK4WTgLhqAdmt48RXBDIx1Ck+AxhPbZxjzGpYX0+eYTZEEaUSP3CQNOLBtD6XYisQBCrytSpXB/jDgIXHjhU2UR6wUcGgWj2PMKCME4uyrGDZ4MX/yasTxyUJtiHgoPqAgjD8IQQbScKyshQtxaIRQ3GQD0gbqr8v5igGENesLVJclgG89/EQQUAVudcRPWOXy5wHEX8wTbmGWODa3AUY+0EQyNkJgs/GxvqA0A4X9iAMqtG9xo0hFsQAwS6K2wT7QYr5oKbA6BPkxiSSs9kBjIyVg/EBZojeGS/wAO0hgnCR0ex1uWWOQFnzH1xEjo3+IeJatqsMoDkADJCBC4CheCXADnmox5yW2f0oEWls5vr1EbULbdquszOZFM47JkR48asGoIhWwFAB7yAgCybgFMAl6gQS4xznTHjqUk6FUTBRn1IlAUzAuJVsMv+tE+gMU5G6KBqGFQ8Eb/ACqRAQA2MxIdNhY5DMU8JS/4+YRh9X8psCIBbV6xEAXjgJuWRaVnlhOGzQah0zHRLBH/AL9i5ZCe4PqGEm0//9oADAMBAAIAAwAAABAnLivqpLOHasCuDh0rdNNTTP2lXjLq/t/Kpm9dmz7QJoCmEZWEjDfr/Gl18bTM7lOnaVfQeLsosvR0yhA4GB0O19EI7s+o1V6ydyj/xAAdEQEBAQEAAgMBAAAAAAAAAAABABEQITEgQWFR/9oACAEDAQE/ELObKy35t6wMfXNt+DOviFY5vC222JHm28ObB/Z2SZZNkceFiwOLvPUWbeuvi98JN4PM4gPq9Q2DxEcL0LI8QI+IdJ4cby4X7bAjbft9wT4jf//EABwRAQEBAQEBAQEBAAAAAAAAAAEAESExEEFRIP/aAAgBAgEBPxAc+N+I9ky222W2GH4Enpttn6R7e8h/LVLbbZbYZbrI+SJD/JHIHUb5KcJa9iZMc+iP08lzCP7AfYMFmD9+BrGP234XSyZyPE/UvVhx8HCOdWMFhYh1nTssyJKCHe3CwNIf5DNQs7Bwbri7h6Tt8sk2/AhWONu+WpNd20y6F//EACYQAQEAAwACAgICAgMBAAAAAAERACExQVFhcYGRobHB0eHw8RD/2gAIAQEAAT8Qiq/l6GTQgPE6fGHo6QlsH4f3jtUIPTmRVJ33v1heC1BBJXWEroKmu4pFTvQD+8peHUQv4cY0Esaud3jjF7K179YbAUA+8VkT4QbMP0iRcH/v9YdCYwry6tmck8U9zFFrhkcFKF9ohfVxkYQoe/jKSm/Dn5yLGLw1r85J6PleX5yBYtmpIP8AebxJ7ZhGLBAHZhTbtdXodNWa+X2LEgn++qB3vuG5Piv6k4Sn8mb0Oml6GnB6/OEtoInFRIjw/wAZH8q1d4swTLvzmoCu9MzeABuSzeFpeDwn+MRIIU8D+MD1HfenODYkAfrPaK7bv/OUesbJCYloeN8zYVU8+sK9Ccgff395BF73wn/f7wM7QUA3WsD0V84v6WCsbDYonoyOUtAtPix1+N/OX+Q8YHOtIiZudqqAoHloENTjGGRKHfy1qTXrF0QNUSPrNdARgFdXzgEkD6D/AFzAkt6+R94EFz9hgJd08+H/AL5yhtPZ/wA+csi2+Xzi26DT1ZihVC6j35wMwt89zwBQ6y4DHx+mFfSggyLbLb2SsbjGgfOTYSDgxR1h8CeVg5eXASFtk/tzRDIS9O31ivkVLxCKHU5c0L+EG3V0aC7+ssVdfBcdGm1XP3lsOuk7tN+sUrvVBLOzIwB2J3+cTYjU5/WOIXQ3kKYDj4zdE69OeR12neSEIL0p7zxA7DHaG+vAfeEDELV7qRdRfWHsohMCARBEl4ubdMkeW0bfn61iuRUXu0kzVdNuuYPlYz2Z61o8pvGPv3iPDQcACA7zDPy1r8gAI++/OdVdnw959WcFfxjpIMAuaRcMUccTbtbHlfjEOw4L1jFo2WYS6C8zy9xWj/nxNpPQmsEQaJObJi2or9TK0Cyzpk0FEjWFam6o3WEAAAICDLN+d07cIlmJi+J62f1jTNwb+TPjBPELwlXIViA7pwEacNgN0N3OYmHbtgFdnL493mKjUHnWEapNXh71+sAg0U1EwUUq6T5ZSyase/eeWAjSPj1iHV1E9b1ktPLjrBFI8jiOTRo3/eKJshG+TeGVPZN4hvZ8ZtR3wHPxm69KNp2krHsPl849kCRngscYn3v3iSAhW4UIVg30HJ3AhZFc2qzRclO5KCJCAoc6UXvzzFIW0wrQXofTyxsE3CEAofFafDgECaGiX4yppf8AB+MeqAivcAhJpzjk7AU6HTCQFHb4uMELp9/jAttcl8YlGuiXp/rGKk8OsugxB95VU/HcaEgVfAyewNqloha5fzgPwxJGdjwlXhz1ML6TMQQbarsYekZHDGye6GygkpaG7TuI+j7aIilBCOqQMHZrVhWN7QqJRXbmjCHdcZSMDRsWd8xxseI2dMYuNqr9Dq+EHNYfgMIBK7+TGoO+x7gaaPbWCkabKXBwk3KYgh4POnFIVDaGOLAX7wKXiGA8fPr5mNQDVSzSx3nbrcwohqqAkYkjdZNtwxoPlsK2yec39ulBuxFfJb5xlWmJ/KUvABAs1gWbLgUSzXhfnExLWB9B8he5vqIl+h+wzvzhaJBgaUnScy6bXHfpTheIHBNWgmhp3sUJ08fGJwUaV/rOkUJ3lxBij6bhhUcadGUdhDdncR2Db84NFEHc2rU/Xsx6V1XQOQ62JsGvvETcOgzrTd66PePemWBzXwv/AHuEKDNsAn1T9XHKDMips9QG+sYLKDeNIevB8/CXA4ySoLfKH/hgaqkUbvk1Luw5hAhNmxNqpOryG/hNcpI3px9r5HcpE2jRXIHWGsdWURsgIBI61Lq4Zrw1n1VtUUd6MELJA7wwmodE1moEPPhwPF9sISHixf8A4MCUL4zwbHaWXzkXwkIVXQXSaSYJCjgDsArbHnXuTG1aEYk8Am6x1N4qNE4o74zZFpyaIddoLxccT3JpTGy8IbdjD0TfJhMfjVIPl2mnx0tjm9r0SHQk17eV1g2+jmGh2eNeLmkYr16A8iV+Rnp2gJt+DLp13F5S3voaupO3yzg2OqfjPImuTIdHnZ/jK62Jo+M88+xrIzLg6gcv3DCw1GBrgtkABf3vFpyD5VEnSoF8BN5qjWk1dvg9F3DfppYJLEKt5W3wcmI9ZhpDKOvH+8HARYPQb7+HBSDWKG08QF/GaTyviBblEmtEdYbfRN1CRughsr94RRo5Fo61BI7W4aimhIfX25cO8zJAS/Y3/wCZSo8GngrdoetDpxPigrpqUc2UT/WCcEpf+Ki/SYTBc0eMimwec0iMPjzlVOXwfHyvgxz31Ox1DSPp0fzj/lDK3Qq8eScwEKqU1qA169YuZcUDN58K05s8YM0QykRqCr26DlyLMRuKBdA7PM2xqUj2+08fnGxAmi0a1w8dv3ighjGBMCFeg6OkSBecQodaqDygXueJDMaiFnIp8h3HbUNVhag35w/j1sXm34B2vQyCYQNHDUYg2ck95dZgLDcAfB0n14xvAXzCAd5v5OQwI8jy41EQW+sQNU684YZNHqFUhuzp1oxUM9DA0KJF3491jjmhUyydF5Rn1hhv7xN11I2N/ePJ6VO0IIjaGy09YGkAEoKPAjz7+sKV8rw074XuGJS8L14kMHB3yDbE+ouLAsuMLA+Du/ae8VJ6kDymm7B9XCRTggkQgU2hSSm/QS0drLNiFL76eZjQn8tlEj7oB8ExadwgQdDaVd+jxkUoIQFsS3fg4DZgUAGpxjd2U+594mIBwaATL8Kn4xkSzx8YKuGappH3grHQycqMgXfzayHKCoVmmOd5+81dyCAvIfO/HrBmbaF8DIoKrgnjAgA0OgW07VcTvJm7k7goE83vgl7HDRck+QEO0N+EzacCMD0edGDIn3I2jwCOrp0NVfEkOwEQ0CqutdNZE7oXMCQcpSJv9ZU/WGo/JgU0bEW1iSsD6BSiJxy+IK0Vtjz8/OP0j6Saa5BKD603NqB5WQFPbH9cuEHkfBlo69sv4wgAnU4wH88YwedyeXqKIgHgJe7uca9lKgJXe284D+dJXTomwOdANsd62bCsVWvyrBPWHzCy0eHg00IH1nwOKsmQQrfUbTFJI85ISy3gaDzrWAlACvdc9iD+cddssQ/9w3OhetD2ojgY+PMEOSnUb683DSFvEqAXp0/OkyLfAwmhegn+Mnc2gLGEGca6PTCco3FSO18wS+3I21StCEndHOusQV55kqevXa7y6iZGxbtnCHnz8ZHoSBEZ/InyF9YTga+sjSuU+i0e1rrW8YEIYg7puuZCJN8wpu5awEwOB7AZbiwakBc2B8BEok3KlXDg5s907viY138qSCpt+UraUPRfGEnICiDp6+vdyclEC+T1h0BABBLk8liJv3gXuIgi8m1Gnw949nmRRCg7TT4uShOCRpXW+6fWSnN56la8DZv1POiE87q3Nn/eXGzbmBEJKhNTZvjrNjKNJ3oRPaW/7w+cEbjdqpA993XMXmODDBfSPLWiFS+v8YIyhZfW1V0AkLgu3cSeIbiGjC2I60+AD43yaTFtC6s8fNaBKgllBJFujX2A7/5lPRtpuKIGigG3RgwnUNE3UhKIm0WYQ+mULA4ow6Q2bKYr9hrfh9h3+cf9EjnkS8o/xiNoRsBtBqMSKR8uOQHbHetFU0+Ao9OAgBYhoyCBO3pkNO2OQuvlTyvgm8CtvGsoHQiL5xqGKXQWhJp0RfeElarkhArxTwc8Yr7IdHh+/GBQ7MeVf4wWpaD7evvuC48mR9eGbzpFzn68Cv2JIOk+Cb33LJRAE2I0j4+8cjUSo2FK9KcvtcRpzSniMZAa8V3mj42MalUOdouy4sohcMInkod/Lwm9Vzjs2bRBOjcDt8A5DpBGlHFIFIKJQRCS8eIcwGK6UuAT0zSB57gW4rgKfCqua7jL9R4iQcFwsUKpRKBnmf5ZdDNMeyohFgH9Uymk7o30I89L4zXLQYFej7JP1hU1QSeVQ/e81qApV8r5TL+gwOfRcBcyGNRbgOVe5NgaRrKzxfMuPHNwU94vXi1JkxZhSrzehPG/vI2vcuIxTuw7caFnXB5bZTLBlBMOayZ9WtWKjSJNMFOON3+8IX8sVXv5sNh8zCB07SNWkAqXS1wkxKUgPNJ3QRTWrvLlsl7KO19/PMASheog1vZ/8rhoQqeggDzut0b+MZFwBFpFFjSM8Y9oKvaaJdBVBfj9glgL0fX2/wAsgBM8+QT6eWzar8XP/9k="); }
+
+:root {
+  --x-verified-icon: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAANE0lEQVR42u1ba3Bc51l+3u875+z9YsWOYkuy0wtpijv500wppulUQ2dKhnTShFoMTQi4ii2wkzTA8Isyu0sYhh8paWkuXdtpijOEYR1mqMO0ZMKMkylNShvKMMVOaiiNpLXUxJa0K+31nPO9Lz/OriTLsrSrW02SM6Mfuzr7fd/zfu/9Arz7vLMf+rnsKkIACCdb+++HABAQydub3BlRKIi+4v8LopERtZVHsrZsp4JoDJEBgN4TEgv57gcEzQFAg2CN12ulcxeGqLL03beBCEhrD5K+Y9M3aR0+IsK3EtEA2eHgDa8BERknrb5tTOPx88M9/wkIQYDNFgvadFmnYJv+43MPkdZ/rEIRRxo1iO8KAG69qchyiMJRsFv3yJiHx8Ye/iJyOQ7W2Dwi0IbdsgDIttbLQSAATp5UH57Zr97Ss3+v48k7zFxZIGIAaBDREmIJAAMirZMp8iuVU8lEfP/ZM/CRhYAAZFrrtz9j/YShdcs1gGXlNS82RsjrPzrzDSuV/h1TLrkg2ADRamwDgadTaceUZ54ZP9RzV3utrvbfVAJkMgrIAjnitnbfcz2uNX45ztppGisy/eY9VN19dOazFE+f5GrZA2B3yVWeiqdtU5m5q3iw55neExLTfr1HK3KUhKujb+CtxfsH58nx5hNgf0Hj5JABgP7jsx8npe+GyMfA3A9wRACfSF+AmO9D5CNkh/rFbwpAXZo3YbLDELc5KYRXSOmPgHkHIDag6lCqCFL/KuL/bXE4+VLAEQWNoSGzeQRomac9T0xeL5H0IyD1GbIciNeEGA8QBkAgbSE4fA3ie6tz/QrSAMuGcqKBpTA+gICWpG2QHYL4LsDmm5gr/8HYAzt/2q0Jpa6cmBxx39GLH1VO/B+VHerlaolBYAAKAlpYjaSl1NRlyq57IgTWgojmTaoACNQuQ0Sp2DbFbuMt0yx/ZuL3rnulfdaNI0BGFLKQXU/V+zX4h6Tt7eLWPIBsXBWPeOREbTH+Rd9rfnjy0LZxZEGdEKFzuSQS5TcfU+HYdnGrVxF4ACBb3JqnwtHtmvB4N34DdSr3u/NT+xCOf1eadQOCvipjDYGhUETDbX5s7GDyu53og9U54ExAJAb9LtmOgOTqjdhIhCxHRPzPB2d/kTZGBxRE95dK/6Wc6I3i1bh7k7ZlLMBkR5R4jXPjxf/Yi9yg38Ioa+OAIG7Hey9WriFQnxgXbSf0KhUBCswx+nbv2ruj5bTR2kWg5dv7lh8TkjBEfg4pFOGWKexMowkDhBArJ9YGsQ4dEPxYlNMkwAPRCsy0KdiZnJiC0gRh6VSvi8BnbZqdvL0yAXJZAQApT81A6AJpq+2AbEXazKhISolb/QGEK+RECMK8mhYkbYEIU8Zyp+cj03VZgbzYxT/aXReRl1oJDN6Cm/dVLK3Zrb/83ven9wG4E6Aq2WEF4ZXMGpMTAUS+8+Y9O6s4LdbaOaClADFCXv/x0l3KCe2TZlUgm+wDMBsVSVrcqP1IStOffmkQZvxg+gWvXv4UQFMqktTgK4iDiJZmlWE5vzTwZOUeDJLfcsupOzMoQsiCsOvf9YD9gbwKxw9Isw7xmmsPbDq7eUOhuBbjvcFz9VvOf2F7EYWCxpn9hBz5fY/97CYVTf4diXxQjLt8hCkCskOgUATSqJyIj44ePJvd67W92Q4IIIQCFPaDB54sP6sTqTtNueQDokGKNlfhRZSIXFS10sdHj+x6bcGTE0LmjI3ch9z+Y6VndTj+G1yfMyDSV1hLQOTrZNr2Z8vfLBZTd2IvCEPgpVmkyylYgMIQmb5j09kWeBdE1uaCFybLIYhU2a3dNnpk12vIiLUAHjoAX35Cx1IrgwcQnJVsUy65VjJ1e//O6T/DEBkULsdLy4W8e/KzN7KtfgRmghjVPd8Lt0/SwasCbQtpi7k2e1vxcO/zyIiFHPkAgNNiYZD8gfzMQyqZ/iJXyj46TueLgDRDKVCzcdPY728/uzRUvvSAewOCGC0PqnDMAhvpGnzLdpMVUsHvV4n1lcVkh5Q0ancXD/c+j9OLwOdftTFI/sDXZh5U8TZ46aKWQQQ2osIxLZb14GKMy3CAEECyMy9RTaX/VnZol/gudxUyi/gqlrZMrfwyIL0qnHif1GYNlNLL344KNH5l5vD4SM8TyL9qY+Rmbx78yM1eX376t61o8gQ3az7Y6DUkWJi0o9hvThpJv39yhGptrJdyQMvHt1G6kbS9S7ymdAeefRVLW9yovpxMpQaJ6VPw3fMUjmvwcrabjIomLVOd+dPLwJ8WCyM3e7sef+s2HY5+g926Aft6jdklJaYpZNk7bZRuXIz1UgJkX1QtL2e3ciLdOTzCrBLbLG5UXglVJm49OwRvfCT9E2+u+kkYfzkieCqeskyl/EjxUM+ftwD7LT1kYZD83U9M/YoVTRTgewT2aV1KWMDKjoCB3YuxLmsFiLR0HYI6EZJa7QVqTv/6/3zhhllkQMictiYf2PG651U/CW4RQdhAxFfxlG2q5b8pHkr/ITKnLQzCABAURCNHfv/jUx9CJHoKIhExnmxU+L0ctkUc8AkGAKXMGLv1ztNlAiHLIfYbz48d3jODgjjIESM36CNz2poc2fG657Y4wY7oQEfMnSoOpw6gIBrZTxiApG3zr3t0Yg9Fwt8CqR7xGgak1AbUvxR7dZCY8cVYLwXZCnJcU/uxGG+C7BB1JAZEmhtzrKKph/uPTt+PIXLnffBFRPAb1V8FMMX1uX/Tauo3g4xNNugJyIjCEJmd+fPb7Wjy28pyBqRRNSC1EW43kw6R+N6kh/Tri7EuuWWS4LB9NSj1HIUigEhneoCFpFllHU39dX9++j4Mko/8q/Y8EQqiJw7v+LHvze2zKrXbRw+8pxFkbXPczjjvzJ+PWlbyOeVEP8j1OX95y7FGJyscARH90+QI1YJy2oI3uMSmBqyhDX2ZG9XhIA7vwBcgIjCDGxWjY6mv9uenURzpebTtxGCIDDKiJg7RuYWqMXEr5gBOQlk68Q8qEv8oV2Z8kLI2ysWE0sSNqiGlvtzKca7gCueIURA9OpJ8nf3mX+hEQkPgdahhCMyK6/NEWMIJFNx2u9wtQsi+qJEjHiiXnlaxxK9tLHgAAk8nElp87y/HhpNnW0qWOw+GjpWf1akugyERgVKswnFtquX7iyM9j15i4xfcbgs58geOlr+qEsn7uLKWAuoK7vVCMHSqWEzdcaVgaPVwWN+QV9HEAWk2IF6jM89YRECKVWQREdrisMjLG8jPZFUyneFq2YNsFPiFcJjrlacTY6P3dhkOX9bdIf3H5j6nLJ2D8Ptaxc61ccJpsXAOhBHy+vIXH7Di13yFa23/njYCvJBlC0i9Icy58eH4iUU6R7rLCLV/kBe7eDDxDLvNlykUIxBMVzqhsUQnjJDX97ULd+to+itcmzUQ0RuWaiYyFIoq9hs/HB+On0BGLGDlFhtavcGJpP9LYxFKJF8jJ7RHvEZ3hZG2OEQT2lTKw0J4Q4fCL4jvAWadLu6yHOCQGPeisvALowe2lVbrMVoZSCYbCEHqmm0g2SHG774wQkQQVlyvCGn9pCI8L76vNhx86zqDHgLqcV3/usW1jXXVBYjdkAD2mgsjRAQ2FBQtlAXjy+ZkmFqFC6UVaSuy/rpANnAarLBVhVBjXYWRtt4MTBRtWnEMBLAxcP3a+gnQkp3/DcenADlP2tmAwghtZm4RpC2I4IKJby8uvsS1F0bayUmh75DjyJYURtZjBZyoEPC9N++hKgqiV2uWWJ0AewMKak1PiecShK7e6nDQNkSs+HjH6aJV32gFMqP3pl7hRu05FU9pgL2rsDXAV9G0xbXZl84Pb/tWO8TeuB4hEWI7dIQb1YvkxG1AvKsJPDlRS5q1GQgNd2OpOiNAjhhZ0MTno+PsNz4tYt5U0bTdqt37CzX8+T+GiOm4rr+aI7Wwliy007a/Z6Ni2yyITPle47bxkfRPkOmsQ2ztjZKP/PR6Tvf+FSl1B9khiLu0UdIG2WGwWwU2qlHSrS80SrabMZ1IkJPzmv/iVypHJu6/9tzmNUrOE2GhHXXg67O3EKzPQfgWETMAkQiIPJC6IMZ8nwj7yA7tFK+BNbfKes1JCH4ArX4ZzDugtAIbA6V/BtLfA3snxu9NndqaVtkrNUuL0HuOV641ysRY203TjM5MjlCt/2jpt3Qi9QxXSmvoK7y0WXrPU5ImM9srWkc8z9Q8tzFx4b7eyiXhe4dsv7Ht8mdepFY3FpZrlx84OvO0TqXvfnu1y684MJENWmtan39x7xlrdnagYCWSt5vZLgYm5uaeSyYTn50fmFga2GQ3ZspsC0ZmSACh/q9XHiJqjcw0axDPBTCfW9BkOZgfmfHNl8bGH/6T/0cjMx3NDQVDU1b4sAjfSsBusiOXDE2B1D+zNB57+wxNXXFsbjIWlp4buNncDQsghIKxubZS28KxObzTByffHZ1993mHP/8HF3iEXcwGiOkAAAAASUVORK5CYII=");
+  --x-locked-icon: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEpUlEQVR42u2bTYgURxTHf93TWdyNHwjioiKCIugmKiReTEANCQlCPAmCnjx4zdGrp1wC3jwETwoKHnIOhCBmiV8HRUGWHIyEJYiBFUzA75me6hzmPSia/pz+Hqeh2Z6t6lfv/69Xr169qnao5nIAFxjK79XAZ8BXwCfATmA98KGUvwL+Bf4E7gPXgNvASynvAQYI6MDVs553AT8Aj0X5PPdjeXdXjOxWg98E/Ai8tQAZwBerMBGAjZT5ofK3ImtTm0lQkwc4ATy1AAwEWF4LGMq7+vupyEbactoEXpU5FwJuxgAeZRk2Eeci2m0UfE965LIo6I/Z41kswpfny9Jmr2kSPPl7SRTr5zDtgQDyrd9ZiNM2LoV0aMzhnc0I3s/R235GEs4WdYxOAfBD4DDwmygcZ46qtDrJe8DvwBKwIv/bCHwMHAT2y/9MwjhXS/KAL4BFS6faPP4q4JGlTJy56/NPwIEM8g9I3SCj7EeiS20zg465M5a3T1LwGXAsRKAnd09u/W0DOCbvJpGgbZ+pyx+oSa4F/rGClzjwy8BuSzk3QxuuBWS3yAgS2jGiy9o6pkZV7HSCs1JS/gMWpP4HY7Sl7yyIrLgIUnU4XYcVaA8uWqFtnEInC4APk3AygXANnRdDOlYGfqsV45sY8NdL7A2VcT2GBGOtGbZWSYIqcjyhN3Scfm1FiWXEG47IjPMFqsvxvMSPw9Sn1lxsX0bkLVvmaEogwFjDblnaMBFxga0bVRCgjeyMCaJUqZsSqbklJTA0iOqL7ChinZBuQRUEaKPzKfWWCkaZSRHrUkq9+byWN44FzKUAXKlwFlpJIWiuSgvQayalfFAhAYOCupVCwERd7z0BXgVk6WrRLZFgN8dqz83jCL0cHthkFPxO6vRL7Ki+JTttpjIhvYMiBDiWgO2MNjJmU4jaIckNr8QERU+ivR0pM9AssIfRRstfERjG8g+bgV+E/aAj9zvReXMRX6fr8lsxC58236rrzRx5iMiE5xErCdk1AjRxeiQpceqmjOdDIqQVmxBjZK4CwRDrN9JMY13HgEcRsW4aCE0JKCcSLPuyDzw4TXWG1xDwKOszTVil1wB4Bfg38ESetwDbIupMlA9QYH8ARxltenwu9wLwrZS5JeUSW2UBCv4ho83M56G5+TXwM3CH0Wbr3rosoU4L8IFTAn7GClQ00JqRslNSd2KGwFDauQE8kJC0H1qhabjdkzo3QsfsOk2AAr2bIaTW8rt5k5tdGAKDiuq2ngDt8Y+sMZ9kLYHUpY51iFsTyQHwpcz3w5h2dcxvkbrBpMwCjkxpa4ALKbn7GamzxjojNBE+QK3gG2BDBDglaYPUCerSza15bf4mgw94U2cOou4VmNs2naYJkSkBUwKmBNBAppaSzy53JiPkSJzvhfbsHOvoqzOJFqCBziywz/pGwA8975M6pu6Dz3Xu1lwBzjM672NvYW8EvqvbArwGxv488H1F3zF0Ii0eJGR6epNsAeHvBToxDXbiU9UiGNIIeNZxEvSLldwEKOhfsx42ammvO4JhLP2VnKsdPiJztUi8ozu2c8BF4EVFX4RW8YXpC9F5Lu184f+P9sFc8Ig7fgAAAABJRU5ErkJggg==");
+}
+
+.x-app {
+  container-type: inline-size;
+}
+
+.x-app .x-name-block,
+.x-app .x-profile-name-row,
+.x-app .twt-name,
+.x-app .x-name-block > strong {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+.x-app .x-profile-name-row {
+  flex-wrap: nowrap !important;
+}
+
+.x-verified-img,
+.x-protected-img {
+  align-self: center !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  vertical-align: middle;
+  position: relative;
+  top: 0;
+  transform: none !important;
+}
+
+.x-app .twt-header {
+  position: relative;
+  display: block;
+  min-height: 0;
+  margin: 0 !important;
+  padding-left: 47px;
+  overflow: visible;
+}
+
+.x-app .twt-icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  float: none;
+}
+
+.x-app .twt-id {
+  min-width: 0;
+  padding-left: 0;
+}
+
+.x-app .twt-quotebox > .twt-header,
+.x-app .twt-image-container > .twt-header {
+  padding-left: 29px;
+  margin-bottom: 0 !important;
+}
+
+.x-app .twt-content {
+  margin: 4px 0 7px 47px !important;
+  padding-top: 0 !important;
+}
+
+.x-app .twt-contentquote {
+  margin: 4px 0 10px !important;
+  padding-top: 0 !important;
+}
+
+.x-app .twt-image-container .twt-content {
+  margin: 4px 0 0 !important;
+  padding-top: 0 !important;
+}
+
+.x-app .x-tweet-head,
+.x-app .x-reply-head,
+.x-app .x-quote-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.x-app .x-name-block {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 0;
+  max-width: 62%;
+  overflow: hidden;
+}
+
+.x-app .x-name-block > .x-tweet-name,
+.x-app .x-name-block > .x-name-link,
+.x-app .x-name-block > strong,
+.x-app .x-name-block > .x-quote-name {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.x-app .x-handle-time {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  margin-left: 4px;
+  column-gap: 3px;
+  color: #657786;
+  white-space: nowrap;
+}
+
+.x-app .x-handle-time .x-handle {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.x-app .x-handle-time .x-dot,
+.x-app .x-handle-time .x-time {
+  flex: none;
+  white-space: nowrap;
+}
+
+.x-app .twt-meta-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.x-app .twt-meta-row .twt-name {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  max-width: 62%;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.x-app .twt-meta-row .twt-name .x-name-link {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.x-app .twt-handle-time {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  margin-left: 4px;
+  column-gap: 3px;
+  color: #657786;
+  font-size: 10.5px;
+  white-space: nowrap;
+}
+
+.x-app .twt-meta-row .twt-handle {
+  display: block;
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: inherit;
+}
+
+.x-app .twt-dot,
+.x-app .twt-time {
+  flex: none;
+  white-space: nowrap;
+}
+
+.x-app .twt-time {
+  color: #657786;
+  font-size: 10.5px;
+}
+
+@container (max-width: 340px) {
+  .x-handle-time .x-handle,
+  .x-handle-time .x-dot,
+  .twt-handle-time .twt-handle,
+  .twt-handle-time .twt-dot {
+    display: none;
+  }
+}
+
+.x-verified-img,
+.x-protected-img {
+  display: inline-block;
+  flex: none;
+  margin-left: 4px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+}
+
+.x-verified-img {
+  width: 14px;
+  height: 14px;
+  transform: translateY(-1px);
+  background-image: var(--x-verified-icon);
+}
+
+.x-protected-img {
+  width: 10.5px;
+  height: 10.5px;
+  transform: translateY(-1px);
+  background-image: var(--x-locked-icon);
+}
+
+.x-profile-name-row .x-verified-img,
+.x-tweet-name .x-verified-img,
+.twt-name .x-verified-img {
+  vertical-align: middle;
+}
+
+.x-profile-name-row .x-verified-img {
+  width: 21px;
+  height: 21px;
+  transform: translateY(-1px);
+}
+
+.x-profile-name-row .x-protected-img {
+  width: 15.75px;
+  height: 15.75px;
+  vertical-align: middle;
+}
+
+.x-tweet-name .x-protected-img,
+.x-reply-head .x-protected-img {
+  width: 7.875px;
+  height: 7.875px;
+  vertical-align: middle;
+}
