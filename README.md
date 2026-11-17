@@ -1,6 +1,7 @@
 # A Doll's House: An Interactive Phone
 
 A self-contained, interactive iPhone 6 made with plain HTML, CSS, and JavaScript.
+An adaptation of Henrik Ibsen's _A Doll's House_.
 
 ## Run it
 
